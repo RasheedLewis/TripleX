@@ -33,12 +33,17 @@ public class Person2 {
 		String randString = new String();
 		char c[] = input.toCharArray();
 		java.util.Random r = new java.util.Random();
+		java.util.ArrayList<Integer> list = new java.util.ArrayList<>();
 
 		for (int i = 0; i < c.length; i++) {
-			int rand = r.nextInt(c.length - 1);
-			char a = c[rand];
-			randString = randString + a;
+			list.add(i);
 		}
+
+		while (list.size() > 0) {
+			int index = r.nextInt(list.size());
+			randString = randString + c[index];
+		}
+
 		return randString;
 	}
 	/**
