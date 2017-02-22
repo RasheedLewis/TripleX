@@ -69,13 +69,19 @@ public class RegistrationActivity extends AppCompatActivity{
         }
 
         _registerButton.setEnabled(false);
-
-
     }
 
     public void onRegisterFailed() {
 
         _registerButton.setEnabled(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public boolean validate() {

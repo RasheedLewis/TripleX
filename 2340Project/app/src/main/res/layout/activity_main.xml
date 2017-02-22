@@ -10,6 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ra.a2340project.MainActivity">
 
+    <!-- Profile Button -->
+    <Button
+        android:text="Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_profile"
+        android:gravity="left"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <!-- Logout Button -->
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_logout"
         android:layout_width="fill_parent"
@@ -17,5 +28,5 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:padding="12dp"
-        android:text="Logout"/>
+        android:text="Logout" />
 </LinearLayout>

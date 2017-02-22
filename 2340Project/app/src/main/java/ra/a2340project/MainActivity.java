@@ -14,7 +14,9 @@ import butterknife.Bind;
  * Created by Rasheed on 2/15/2017.
  */
 public class MainActivity extends AppCompatActivity {
+
     @Bind(R.id.btn_logout) Button _logoutButton;
+    @Bind(R.id.button_profile) Button _profileButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start the Login activity
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+
+        _profileButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
