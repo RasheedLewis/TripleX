@@ -9,7 +9,8 @@
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="ra.a2340project.RegistrationActivity">
 
     <TextView
         android:text="Registration"
@@ -48,12 +49,12 @@
                 android:layout_marginBottom="2dp">
 
                 <AutoCompleteTextView
-                    android:id="@+id/first_name"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Name"
                     android:inputType="text"
-                    android:maxLength="1" />
+                    android:maxLines="1" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -78,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Enter Email"
                     android:inputType="text"
-                    android:maxLength="1"/>
+                    android:maxLines="1"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -103,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Enter Username"
                     android:inputType="text"
-                    android:maxLength="1"/>
+                    android:maxLines="1"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -128,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Enter Password"
                     android:inputType="text"
-                    android:maxLength="1"/>
+                    android:maxLines="1"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -153,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Enter Password"
                     android:inputType="text"
-                    android:maxLength="1"/>
+                    android:maxLines="1"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -170,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:id="@+id/spinner" />
+                android:id="@+id/status_spinner" />
 
             <!-- Button -->
             <android.support.v7.widget.AppCompatButton

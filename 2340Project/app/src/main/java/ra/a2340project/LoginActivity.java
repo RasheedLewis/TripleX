@@ -50,17 +50,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-//        _signupLink.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                // Start the Signup activity
-//                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-//                startActivityForResult(intent, REQUEST_SIGNUP);
-//                finish();
-//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//            }
-//        });
+        _signupLink.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // Start the Registration activity
+                Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                startActivityForResult(intent, REQUEST_SIGNUP);
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     public void login() {
