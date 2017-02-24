@@ -33,6 +33,9 @@ public class RegistrationActivity extends AppCompatActivity{
     @Bind(R.id.status_spinner) Spinner _statusSpinner;
     @Bind(R.id.button_register) Button _registerButton;
 
+    Model model = new Model();
+
+    private User _user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,13 @@ public class RegistrationActivity extends AppCompatActivity{
                 }
             }
         });
+
+        _accountNameText = (EditText) findViewById(R.id.name);
+        _accountEmailText = (EditText) findViewById(R.id.email);
+        _accountUsernameText = (EditText) findViewById(R.id.username);
+        _accountPasswordText = (EditText) findViewById(R.id.password);
+        _statusSpinner = (Spinner) findViewById(R.id.status_spinner);
+
     }
 
     public void register() {
@@ -67,6 +77,14 @@ public class RegistrationActivity extends AppCompatActivity{
             onRegisterFailed();
             return;
         }
+
+        _user.setName(_accountNameText.getText().toString());
+        _user.setEmail(_accountEmailText.getText().toString());
+        _user.setPassword(_accountPasswordText.getText().toString());
+        _user.setUsername(_accountUsernameText.getText().toString());
+        _user.setStatus((String) _statusSpinner.getSelectedItem());
+
+        model.addUser(_user.getUsername(),_user);
 
         _registerButton.setEnabled(false);
     }
@@ -105,6 +123,11 @@ public class RegistrationActivity extends AppCompatActivity{
 
         if (username.isEmpty()) {
             _accountUsernameText.setError("Enter a valid username");
+            valid = false;
+        }
+
+        if (model.getHashMap().containsKey(username)) {
+            _accountUsernameText.setError("Username is already taken");
             valid = false;
         }
 
