@@ -23,6 +23,10 @@ public class User implements Parcelable {
 
     public static List<String> statuses = Arrays.asList("User", "Worker", "Manager", "Administrator");
 
+    public User(String _username) {
+        this._username = _username;
+    }
+
     /* **************
      * Getters and Seters
      */

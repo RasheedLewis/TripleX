@@ -33,6 +33,8 @@ public class RegistrationActivity extends AppCompatActivity{
     @Bind(R.id.status_spinner) Spinner _statusSpinner;
     @Bind(R.id.button_register) Button _registerButton;
 
+
+
     Model model = new Model();
 
     private User _user;
@@ -53,20 +55,14 @@ public class RegistrationActivity extends AppCompatActivity{
             public void onClick(View v) {
                 register();
 
-                if (validate()) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                }
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
             }
         });
 
-        _accountNameText = (EditText) findViewById(R.id.name);
-        _accountEmailText = (EditText) findViewById(R.id.email);
-        _accountUsernameText = (EditText) findViewById(R.id.username);
-        _accountPasswordText = (EditText) findViewById(R.id.password);
-        _statusSpinner = (Spinner) findViewById(R.id.status_spinner);
 
     }
 
@@ -78,6 +74,8 @@ public class RegistrationActivity extends AppCompatActivity{
             return;
         }
 
+        String username = _accountUsernameText.getText().toString();
+        _user = new User(username);
         _user.setName(_accountNameText.getText().toString());
         _user.setEmail(_accountEmailText.getText().toString());
         _user.setPassword(_accountPasswordText.getText().toString());
@@ -85,6 +83,7 @@ public class RegistrationActivity extends AppCompatActivity{
         _user.setStatus((String) _statusSpinner.getSelectedItem());
 
         model.addUser(_user.getUsername(),_user);
+        model.setCurrentUser(_user);
 
         _registerButton.setEnabled(false);
     }
@@ -145,6 +144,8 @@ public class RegistrationActivity extends AppCompatActivity{
             _accountConfirmPassText.setError("Your passwords do not match");
             valid = false;
         }
+
         return valid;
     }
+
 }
