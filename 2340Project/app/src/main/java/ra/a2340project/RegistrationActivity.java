@@ -33,10 +33,6 @@ public class RegistrationActivity extends AppCompatActivity{
     @Bind(R.id.status_spinner) Spinner _statusSpinner;
     @Bind(R.id.button_register) Button _registerButton;
 
-
-
-    Model model = new Model();
-
     private User _user;
 
     @Override
@@ -68,7 +64,7 @@ public class RegistrationActivity extends AppCompatActivity{
 
     public void register() {
         Log.d(TAG, "Register");
-
+        Model model = Model.getInstance();
         if (!validate()) {
             onRegisterFailed();
             return;
@@ -84,6 +80,8 @@ public class RegistrationActivity extends AppCompatActivity{
 
         model.addUser(_user.getUsername(),_user);
         model.setCurrentUser(_user);
+
+        System.out.println(_user);
 
         _registerButton.setEnabled(false);
     }
@@ -102,6 +100,8 @@ public class RegistrationActivity extends AppCompatActivity{
     }
 
     public boolean validate() {
+        Model model = Model.getInstance();
+
         boolean valid = true;
 
         String name = _accountNameText.getText().toString();
@@ -144,6 +144,12 @@ public class RegistrationActivity extends AppCompatActivity{
             _accountConfirmPassText.setError("Your passwords do not match");
             valid = false;
         }
+
+        if(model.getHashMap().containsKey(username)) {
+            _accountUsernameText.setError("This username already exists. Pick another.");
+            valid = false;
+        }
+
 
         return valid;
     }

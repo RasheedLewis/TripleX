@@ -45,6 +45,11 @@ public class User implements Parcelable {
     public String getStatus() { return _status; }
     public void setStatus(String status) { _status = status; }
 
+    @Override
+    public String toString() {
+        return (_username);
+    }
+
 
     private User(Parcel in){
         _name = in.readString();

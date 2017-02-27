@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" 
     android:layout_width="match_parent"
@@ -11,6 +13,8 @@
     android:paddingRight="16dp"
     android:weightSum="1"
     tools:context="ra.a2340project.RegistrationActivity">
+
+
 
     <TextView
         android:text="Profile"
@@ -33,7 +37,7 @@
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
-            <!-- Name -->
+
             <TextView
                 android:id="@+id/profile_name"
                 android:layout_width="match_parent"
@@ -42,7 +46,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:paddingBottom="30dp" />
 
-            <!-- Email -->
+
             <TextView
                 android:id="@+id/profile_email"
                 android:layout_width="match_parent"
@@ -51,7 +55,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:paddingBottom="30dp"/>
 
-            <!-- Username -->
+
             <TextView
                 android:id="@+id/profile_username"
                 android:layout_width="match_parent"
@@ -60,7 +64,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:paddingBottom="30dp"/>
 
-            <!-- Status -->
+
             <TextView
                 android:id="@+id/profile_status"
                 android:layout_width="match_parent"
@@ -72,5 +76,6 @@
         </LinearLayout>
         
     </ScrollView>
+
 
 </LinearLayout>

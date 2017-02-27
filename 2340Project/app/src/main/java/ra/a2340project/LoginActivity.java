@@ -129,19 +129,21 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
+        Model model = Model.getInstance();
         String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (username.isEmpty() || !(username.equals("user"))) {
-            _usernameText.setError("enter a valid username");
+        if (username.isEmpty() || !(model.getHashMap().containsKey(username))) {
+            _usernameText.setError("Enter a valid username");
             valid = false;
         } else {
             _usernameText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10
-                || !(password.equals("pass"))) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+        if(password.isEmpty() ||
+                (model.getHashMap().containsKey(username) &&
+                        !(model.getHashMap().get(username).getPassword().equals(password)))) {
+            _passwordText.setError("Your password is incorrect.");
             valid = false;
         } else {
             _passwordText.setError(null);
