@@ -60,6 +60,10 @@ public class RegistrationActivity extends AppCompatActivity{
         });
     }
 
+    /**
+     * Saves all entered data when registration button is entered
+     * Adds new user to user hash map
+     */
     public void register() {
         Log.d(TAG, "Register");
         Model model = Model.getInstance();
@@ -94,6 +98,11 @@ public class RegistrationActivity extends AppCompatActivity{
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
+    /**
+     * Checks all input informaiton
+     *
+     * @return boolean indicating if all information entered is valid
+     */
     public boolean validate() {
         Model model = Model.getInstance();
 
