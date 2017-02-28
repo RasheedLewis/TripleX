@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" 
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +12,6 @@
     android:weightSum="1"
     tools:context="ra.a2340project.RegistrationActivity">
 
-
     <!-- Profile Title -->
     <TextView
         android:text="Profile"
@@ -21,12 +20,12 @@
         android:layout_gravity="center"
         android:id="@+id/registration_textView"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-    
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:fitsSystemWindows="true">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,87 +38,112 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/profile_name_label"
+                android:id="@+id/profile_edit_name_label"
                 android:text="Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
-            <!-- Name -->
-            <TextView
-                android:id="@+id/profile_name"
+            <!-- Name Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:paddingBottom="20dp" />
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:paddingBottom="20dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/profile_edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Name"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <!-- Email Label -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/profile_email_label"
+                android:id="@+id/profile_edit_email_label"
                 android:text="Email"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
-            <!-- Email -->
-            <TextView
-                android:id="@+id/profile_email"
+            <!-- Email Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:paddingBottom="20dp"/>
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:paddingBottom="20dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/profile_edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <!-- Username Label -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/profile_username_label"
+                android:id="@+id/profile_edit_username_label"
                 android:text="Username"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
-            <!-- Username -->
-            <TextView
-                android:id="@+id/profile_username"
+            <!-- Username Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:paddingBottom="20dp"/>
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:paddingBottom="20dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/profile_edit_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Username"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <!-- Status Label -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/profile_status_label"
+                android:id="@+id/profile_edit_status_label"
                 android:text="Status"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
-            <!-- Status -->
-            <TextView
-                android:id="@+id/profile_status"
+            <!-- Status Spinner -->
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:paddingBottom="20dp"/>
+                android:layout_marginTop="20dp"
+                android:id="@+id/status_spinner_profile_edit" />
 
             <!-- Button -->
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/button_profile_Edit"
+                android:id="@+id/button_profile_edit_Done"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
                 android:gravity="center"
-                android:text="Edit"/>
+                android:text="Done"/>
 
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 
 </LinearLayout>

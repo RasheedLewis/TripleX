@@ -58,8 +58,6 @@ public class RegistrationActivity extends AppCompatActivity{
 
             }
         });
-
-
     }
 
     public void register() {
@@ -81,13 +79,10 @@ public class RegistrationActivity extends AppCompatActivity{
         model.addUser(_user.getUsername(),_user);
         model.setCurrentUser(_user);
 
-        System.out.println(_user);
-
         _registerButton.setEnabled(false);
     }
 
     public void onRegisterFailed() {
-
         _registerButton.setEnabled(true);
     }
 
@@ -149,7 +144,6 @@ public class RegistrationActivity extends AppCompatActivity{
             _accountUsernameText.setError("This username already exists. Pick another.");
             valid = false;
         }
-
 
         return valid;
     }

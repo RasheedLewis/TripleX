@@ -61,4 +61,10 @@ public class Model {
             return false;
         }
     }
+
+    public void replaceUserData(User user) {
+        User existing = _currentUser;
+        addUser(user.getUsername(),user);
+        _userHashMap.remove(existing.getUsername());
+    }
 }
