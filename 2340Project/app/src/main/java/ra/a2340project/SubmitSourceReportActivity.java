@@ -32,7 +32,6 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
     @Bind(R.id.button_submit_source_report) Button _submitButton;
 
     private SourceReport report;
-    public int reportNum = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -67,12 +66,12 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         Model model = Model.getInstance();
         Date date = new Date();
 
-        report = new SourceReport(reportNum);
-        reportNum++;
+        report = new SourceReport(model.getReportNum());
+        model.setReportNum(model.getReportNum() + 1);
 
-        int month = date.getMonth();
-        int day = date.getDay();
-        int year = date.getYear();
+        int month = date.getMonth() + 1;
+        int day = date.getDate();
+        int year = date.getYear() + 1900;
 
         int hours = date.getHours();
         int minutes = date.getMinutes();
@@ -88,7 +87,7 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
 
 
         report.setName(model.getCurrentUser().getName());
-        report.setLocation(street + city + state + zipCode);
+        report.setLocation(street + ", " + city + ", " + state + ", " + zipCode);
         report.setDate(currentDate);
         report.setTime(currentTime);
         report.setType((String) _typeSpinner.getSelectedItem());
@@ -96,6 +95,12 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
 
         model.addSourceReport(report.getReportNum(),report);
         model.setCurrentSourceReport(report);
+
+        System.out.println(report.getName());
+        System.out.println(report.getDate());
+        System.out.println(report.getTime());
+        System.out.println(report.getReportNum());
+        System.out.println(report.getLocation());
 
         _submitButton.setEnabled(false);
     }

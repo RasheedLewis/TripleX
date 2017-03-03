@@ -25,6 +25,8 @@ public class Model {
     /** the currently selected source report */
     private SourceReport _currentSourceReport;
 
+    public int reportNum;
+
     /**
      *
      * @return the current user
@@ -50,6 +52,18 @@ public class Model {
      * @param report the source report being set to the current source report
      */
     public void setCurrentSourceReport(SourceReport report) {_currentSourceReport = report;}
+
+    /**
+     *
+     * @return reportNum, the specific number of a report
+     */
+    public int getReportNum() {return reportNum;}
+
+    /**
+     *
+     * @param num the number the reportNum is being set to.
+     */
+    public void setReportNum(int num) {reportNum = num;}
 
     /*
      * makes new model
