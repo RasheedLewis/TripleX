@@ -96,12 +96,6 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         model.addSourceReport(report.getReportNum(),report);
         model.setCurrentSourceReport(report);
 
-        System.out.println(report.getName());
-        System.out.println(report.getDate());
-        System.out.println(report.getTime());
-        System.out.println(report.getReportNum());
-        System.out.println(report.getLocation());
-
         _submitButton.setEnabled(false);
     }
 
