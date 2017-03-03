@@ -64,7 +64,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         _user = model.getCurrentUser();
         _user.setName(_profileNameText.getText().toString());
         _user.setEmail(_profileEmailText.getText().toString());
-        _user.setPassword(model.getHashMap().get(model.getCurrentUser().getUsername()).getPassword());
+        _user.setPassword(model.getUserHashMap().get(model.getCurrentUser().getUsername()).getPassword());
         _user.setUsername(_profileUsernameText.getText().toString());
         _user.setStatus((String) _profileStatusSpinner.getSelectedItem());
 
@@ -80,7 +80,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         String username = _profileUsernameText.getText().toString();
 
-        if (model.getHashMap().containsKey(username) && !(username.equals(model.getHashMap().get(_user.getUsername())))) {
+        if (model.getUserHashMap().containsKey(username) && !(username.equals(model.getUserHashMap().get(_user.getUsername())))) {
             _profileUsernameText.setError("Username is already taken");
             valid = false;
         } else {

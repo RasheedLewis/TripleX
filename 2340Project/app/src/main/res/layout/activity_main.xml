@@ -20,6 +20,16 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
+    <!-- Submit Water Source Report Button -->
+    <Button
+        android:text="Submit Report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_source_report_submission"
+        android:gravity="left"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
     <!-- Logout Button -->
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_logout"

@@ -33,6 +33,7 @@ public class RegistrationActivity extends AppCompatActivity{
     @Bind(R.id.status_spinner) Spinner _statusSpinner;
     @Bind(R.id.button_register) Button _registerButton;
 
+
     private User _user;
 
     @Override
@@ -129,7 +130,7 @@ public class RegistrationActivity extends AppCompatActivity{
             valid = false;
         }
 
-        if (model.getHashMap().containsKey(username)) {
+        if (model.getUserHashMap().containsKey(username)) {
             _accountUsernameText.setError("Username is already taken");
             valid = false;
         }
@@ -149,7 +150,7 @@ public class RegistrationActivity extends AppCompatActivity{
             valid = false;
         }
 
-        if(model.getHashMap().containsKey(username)) {
+        if(model.getUserHashMap().containsKey(username)) {
             _accountUsernameText.setError("This username already exists. Pick another.");
             valid = false;
         }

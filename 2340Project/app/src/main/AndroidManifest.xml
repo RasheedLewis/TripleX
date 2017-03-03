@@ -29,6 +29,8 @@
         <activity android:name=".ProfileActivity"></activity>
 
         <activity android:name=".ProfileEditActivity"></activity>
+
+        <activity android:name=".SubmitSourceReportActivity"></activity>
     </application>
 
 </manifest>

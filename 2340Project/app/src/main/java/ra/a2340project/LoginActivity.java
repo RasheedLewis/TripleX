@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (username.isEmpty() || !(model.getHashMap().containsKey(username))) {
+        if (username.isEmpty() || !(model.getUserHashMap().containsKey(username))) {
             _usernameText.setError("Enter a valid username");
             valid = false;
         } else {
@@ -141,8 +141,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if(password.isEmpty() ||
-                (model.getHashMap().containsKey(username) &&
-                        !(model.getHashMap().get(username).getPassword().equals(password)))) {
+                (model.getUserHashMap().containsKey(username) &&
+                        !(model.getUserHashMap().get(username).getPassword().equals(password)))) {
             _passwordText.setError("Your password is incorrect.");
             valid = false;
         } else {

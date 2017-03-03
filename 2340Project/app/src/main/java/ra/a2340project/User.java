@@ -15,11 +15,11 @@ import java.util.List;
 
 public class User implements Parcelable {
 
-    public String _name;
-    public String _username;
-    public String _email;
+    private String _name;
+    private String _username;
+    private String _email;
     private String _password;
-    public String _status;
+    private String _status;
 
     public static List<String> statuses = Arrays.asList("User", "Worker", "Manager", "Administrator");
 
