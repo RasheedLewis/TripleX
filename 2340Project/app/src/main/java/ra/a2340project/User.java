@@ -13,6 +13,8 @@ import java.util.List;
  *
  */
 
+//Hi, this is a test.
+    
 public class User implements Parcelable {
 
     private String _name;
