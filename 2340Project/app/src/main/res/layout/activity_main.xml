@@ -11,6 +11,7 @@
     tools:context="ra.a2340project.MainActivity">
 
     <!-- Profile Button -->
+
     <Button
         android:text="Profile"
         android:layout_width="match_parent"
@@ -31,6 +32,15 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <!-- Logout Button -->
+    <Button
+        android:text="View Reports"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_view_reports"
+        android:gravity="left"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_logout"
         android:layout_width="fill_parent"

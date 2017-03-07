@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.btn_logout) Button _logoutButton;
     @Bind(R.id.button_profile) Button _profileButton;
     @Bind(R.id.button_source_report_submission) Button _submitReportButton;
+    @Bind(R.id.button_view_reports) Button _viewReportsButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SubmitSourceReportActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+        _viewReportsButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ViewSourceReports.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
