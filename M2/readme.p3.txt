@@ -1,2 +1,0 @@
-Madeline Helmstadter
-mhelmstadter@gatech.edu
