@@ -6,6 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Geocoder;
+<<<<<<< HEAD
+import android.location.Address;
+=======
+>>>>>>> origin/master
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +34,11 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import android.support.v4.app.FragmentActivity;
 
+<<<<<<< HEAD
+import java.io.IOException;
+=======
 import java.util.Collection;
+>>>>>>> origin/master
 import java.util.List;
 
 import butterknife.ButterKnife;
