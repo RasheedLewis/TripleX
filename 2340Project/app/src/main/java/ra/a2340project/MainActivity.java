@@ -136,12 +136,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Collection<SourceReport> reports = model.getSourceReportHashMap().values();
 
+        Marker marker;
         for (SourceReport report : reports) {
             String location = report.getLocation();
             if (location != null) {
                 LatLng latLong = getLocationFromAddress(getApplicationContext(), location);
-                googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
+                marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
+                marker.setTag(report);
             }
         }
     }
@@ -231,7 +233,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onMarkerClick(final Marker marker){
-
+        SourceReport report = (SourceReport) marker.getTag();
+        model.setCurrentSourceReport(report);
+        Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
 }
