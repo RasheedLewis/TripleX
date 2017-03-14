@@ -42,7 +42,7 @@ import butterknife.Bind;
  * Created by Rasheed on 2/15/2017.
  */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback,
-    OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
+        GoogleMap.OnMarkerClickListener {
 
     @Bind(R.id.btn_logout) Button _logoutButton;
     @Bind(R.id.button_profile) Button _profileButton;
@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */,
-                        this /* OnConnectionFailedListener */)
-                .addApi(Drive.API)
-                .addScope(Drive.SCOPE_FILE)
-                .build();
+//        mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .enableAutoManage(this /* FragmentActivity */,
+//                        this /* OnConnectionFailedListener */)
+//                .addApi(Drive.API)
+//                .addScope(Drive.SCOPE_FILE)
+//                .build();
 
         _logoutButton.setOnClickListener(new View.OnClickListener() {
 
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
-        googleMap.setOnMarkerClickListener(this);
+
 
         Collection<SourceReport> reports = model.getSourceReportHashMap().values();
 
@@ -146,64 +146,79 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 marker.setTag(report);
             }
         }
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker){
+                SourceReport report = (SourceReport) marker.getTag();
+                model.setCurrentSourceReport(report);
+                Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                return false;
+            }
+        });
+
+
     }
 
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        if (mResolvingError) {
-            // Already attempting to resolve an error.
-            return;
-        } else if (result.hasResolution()) {
-            try {
-                mResolvingError = true;
-                result.startResolutionForResult(this, REQUEST_RESOLVE_ERROR);
-            } catch (IntentSender.SendIntentException e) {
-                // There was an error with the resolution intent. Try again.
-                mGoogleApiClient.connect();
-            }
-        } else {
-            // Show dialog using GoogleApiAvailability.getErrorDialog()
-            showErrorDialog(result.getErrorCode());
-            mResolvingError = true;
-        }
-    }
+//    @Override
+//    public void onConnectionFailed(ConnectionResult result) {
+//        if (mResolvingError) {
+//            // Already attempting to resolve an error.
+//            return;
+//        } else if (result.hasResolution()) {
+//            try {
+//                mResolvingError = true;
+//                result.startResolutionForResult(this, REQUEST_RESOLVE_ERROR);
+//            } catch (IntentSender.SendIntentException e) {
+//                // There was an error with the resolution intent. Try again.
+//                mGoogleApiClient.connect();
+//            }
+//        } else {
+//            // Show dialog using GoogleApiAvailability.getErrorDialog()
+//            showErrorDialog(result.getErrorCode());
+//            mResolvingError = true;
+//        }
+//    }
 
     // The rest of this code is all about building the error dialog
 
     /* Creates a dialog for an error message */
-    private void showErrorDialog(int errorCode) {
-        // Create a fragment for the error dialog
-        ErrorDialogFragment dialogFragment = new ErrorDialogFragment();
-        // Pass the error that should be displayed
-        Bundle args = new Bundle();
-        args.putInt(DIALOG_ERROR, errorCode);
-        dialogFragment.setArguments(args);
-        dialogFragment.show(getSupportFragmentManager(), "errordialog");
-    }
+//    private void showErrorDialog(int errorCode) {
+//        // Create a fragment for the error dialog
+//        ErrorDialogFragment dialogFragment = new ErrorDialogFragment();
+//        // Pass the error that should be displayed
+//        Bundle args = new Bundle();
+//        args.putInt(DIALOG_ERROR, errorCode);
+//        dialogFragment.setArguments(args);
+//        dialogFragment.show(getSupportFragmentManager(), "errordialog");
+//    }
 
     /* Called from ErrorDialogFragment when the dialog is dismissed. */
-    public void onDialogDismissed() {
-        mResolvingError = false;
-    }
+//    public void onDialogDismissed() {
+//        mResolvingError = false;
+//    }
 
     /* A fragment to display an error dialog */
-    public static class ErrorDialogFragment extends DialogFragment {
-        public ErrorDialogFragment() {
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Get the error code and retrieve the appropriate dialog
-            int errorCode = this.getArguments().getInt(DIALOG_ERROR);
-            return GoogleApiAvailability.getInstance().getErrorDialog(
-                    this.getActivity(), errorCode, REQUEST_RESOLVE_ERROR);
-        }
-
-        @Override
-        public void onDismiss(DialogInterface dialog) {
-            ((MainActivity) getActivity()).onDialogDismissed();
-        }
-    }
+//    public static class ErrorDialogFragment extends DialogFragment {
+//        public ErrorDialogFragment() {
+//        }
+//
+//        @Override
+//        public Dialog onCreateDialog(Bundle savedInstanceState) {
+//            // Get the error code and retrieve the appropriate dialog
+//            int errorCode = this.getArguments().getInt(DIALOG_ERROR);
+//            return GoogleApiAvailability.getInstance().getErrorDialog(
+//                    this.getActivity(), errorCode, REQUEST_RESOLVE_ERROR);
+//        }
+//
+//        @Override
+//        public void onDismiss(DialogInterface dialog) {
+//            ((MainActivity) getActivity()).onDialogDismissed();
+//        }
+//    }
 
     public LatLng getLocationFromAddress(Context context, String strAddress) {
         Geocoder coder= new Geocoder(context);
@@ -231,15 +246,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    @Override
-    public boolean onMarkerClick(final Marker marker){
-        SourceReport report = (SourceReport) marker.getTag();
-        model.setCurrentSourceReport(report);
-        Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        return false;
-    }
+
 
 }
