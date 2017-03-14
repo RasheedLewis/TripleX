@@ -1,9 +1,11 @@
 package ra.a2340project;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.location.Address;
+
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -26,6 +30,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import android.support.v4.app.FragmentActivity;
 
+import java.util.Collection;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 /**
@@ -38,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Bind(R.id.button_profile) Button _profileButton;
     @Bind(R.id.button_source_report_submission) Button _submitReportButton;
     @Bind(R.id.button_view_reports) Button _viewReportsButton;
+
+    Model model = Model.getInstance();
 
     // Request code to use when launching the resolution activity
     private static final int REQUEST_RESOLVE_ERROR = 1001;
@@ -114,10 +123,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//        LatLng sydney = new LatLng(-33.852, 151.211);
+//        googleMap.addMarker(new MarkerOptions().position(sydney)
+//                .title("Marker in Sydney"));
+
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        Collection<SourceReport> reports = model.getSourceReportHashMap().values();
+
+        for (SourceReport report : reports) {
+            String location = report.getLocation();
+            if (location != null) {
+                LatLng latLong = getLocationFromAddress(getApplicationContext(), location);
+                googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
+            }
+        }
     }
 
     @Override
@@ -176,4 +195,31 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             ((MainActivity) getActivity()).onDialogDismissed();
         }
     }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+        Geocoder coder= new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try
+        {
+            address = coder.getFromLocationName(strAddress, 5);
+            if(address==null)
+            {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return p1;
+
+    }
+
 }
