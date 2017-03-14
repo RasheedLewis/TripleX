@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (location != null) {
                 LatLng latLong = getLocationFromAddress(getApplicationContext(), location);
                 googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
             }
         }
     }

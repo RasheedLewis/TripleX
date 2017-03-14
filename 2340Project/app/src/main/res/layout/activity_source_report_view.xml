@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_horizontal"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:weightSum="1">
+
+
+    <!-- Title -->
+    <TextView
+        android:text="Water Soruce Report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/registration_textView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="40dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <!-- Name Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/soure_report_view_name_label"
+                android:text="Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/source_report_view_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp" />
+
+            <!-- location Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/source_report_view_location_label"
+                android:text="Location"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Location -->
+            <TextView
+                android:id="@+id/source_report_view_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp"/>
+
+            <!-- Number Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/source_report_view_reportNum_label"
+                android:text="Report Number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Report Num -->
+            <TextView
+                android:id="@+id/source_report_view_reportNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp"/>
+
+            <!-- Type Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/source_report_view_type_label"
+                android:text="Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Type -->
+            <TextView
+                android:id="@+id/source_report_view_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp"/>
+
+            <!-- Condition Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/source_report_view_condition_label"
+                android:text="Condition"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Condition -->
+            <TextView
+                android:id="@+id/source_report_view_condition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp"/>
+
+            <!-- Date Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/source_report_view_date_label"
+                android:text="Date"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Date -->
+            <TextView
+                android:id="@+id/source_report_view_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp"/>
+
+            <!-- Time Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/source_report_view_time_label"
+                android:text="Time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:paddingBottom="20dp" />
+
+            <!-- Time -->
+            <TextView
+                android:id="@+id/source_report_view_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:paddingBottom="20dp"/>
+
+            <!-- Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/source_report_view_BackButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:gravity="center"
+                android:text="Back"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
