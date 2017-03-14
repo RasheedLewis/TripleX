@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     Model model = Model.getInstance();
 
+
+    GoogleMap googleMap;
+
     // Request code to use when launching the resolution activity
     private static final int REQUEST_RESOLVE_ERROR = 1001;
     // Unique tag for the error dialog fragment
@@ -132,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
-
+        googleMap.setOnMarkerClickListener(this);
 
         Collection<SourceReport> reports = model.getSourceReportHashMap().values();
 
@@ -141,27 +144,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             String location = report.getLocation();
             if (location != null) {
                 LatLng latLong = getLocationFromAddress(getApplicationContext(), location);
-                marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
-                marker.setTag(report);
+                if (latLong != null) {
+                    marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
+                    marker.setTag(report);
+                }
             }
         }
 
-        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker){
-                SourceReport report = (SourceReport) marker.getTag();
-                model.setCurrentSourceReport(report);
-                Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                return false;
-            }
-        });
-
-
     }
+
+    @Override
+    public boolean onMarkerClick(Marker marker){
+        SourceReport report = (SourceReport) marker.getTag();
+        model.setCurrentSourceReport(report);
+        Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        return false;
+    }
+
+
 
 //    @Override
 //    public void onConnectionFailed(ConnectionResult result) {

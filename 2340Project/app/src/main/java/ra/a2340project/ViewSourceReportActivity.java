@@ -39,7 +39,7 @@ public class ViewSourceReportActivity extends AppCompatActivity {
         locationTextView.setText(report.getLocation());
 
         TextView numTextView = (TextView) findViewById(R.id.source_report_view_reportNum);
-        numTextView.setText(report.getReportNum());
+        numTextView.setText(Integer.toString(report.getReportNum()));
 
         TextView typeTextView = (TextView) findViewById(R.id.source_report_view_type);
         typeTextView.setText(report.getType());
