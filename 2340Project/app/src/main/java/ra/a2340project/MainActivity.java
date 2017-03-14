@@ -6,10 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Geocoder;
-<<<<<<< HEAD
 import android.location.Address;
-=======
->>>>>>> origin/master
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -28,17 +25,15 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import android.support.v4.app.FragmentActivity;
 
-<<<<<<< HEAD
 import java.io.IOException;
-=======
 import java.util.Collection;
->>>>>>> origin/master
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -47,7 +42,7 @@ import butterknife.Bind;
  * Created by Rasheed on 2/15/2017.
  */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback,
-    OnConnectionFailedListener {
+    OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
 
     @Bind(R.id.btn_logout) Button _logoutButton;
     @Bind(R.id.button_profile) Button _profileButton;
@@ -136,6 +131,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                .title("Marker in Sydney"));
 
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+        googleMap.setOnMarkerClickListener(this);
+
         Collection<SourceReport> reports = model.getSourceReportHashMap().values();
 
         for (SourceReport report : reports) {
@@ -228,6 +226,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             e.printStackTrace();
         }
         return p1;
+
+    }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker){
 
     }
 
