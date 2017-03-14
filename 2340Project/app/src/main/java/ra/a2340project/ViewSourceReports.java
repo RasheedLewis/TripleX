@@ -56,7 +56,6 @@ public class ViewSourceReports extends AppCompatActivity {
      * This inner class is our custom adapter.  It takes our basic model information and
      * converts it to the correct layout for this view.
      *
-     * In this case, we are just mapping the toString of the Course object to a text field.
      */
     public class SimpleCourseRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleCourseRecyclerViewAdapter.ViewHolder> {
@@ -101,7 +100,7 @@ public class ViewSourceReports extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            holder.reportID.setText("" + reportList.get(key).getDate());
+            holder.reportID.setText("" + reportList.get(key).getReportNum());
             holder.reportLOC.setText(reportList.get(key).getLocation());
             holder.reportTYPE.setText(reportList.get(key).getType());
             holder.reportCOND.setText(reportList.get(key).getCondition());
@@ -115,7 +114,7 @@ public class ViewSourceReports extends AppCompatActivity {
 
         /**
          * This inner class represents a ViewHolder which provides us a way to cache information
-         * about the binding between the model element (in this case a Course) and the widgets in
+         * about the binding between the model element (in this case a Reports) and the widgets in
          * the list view (in this case the two TextView)
          */
 
