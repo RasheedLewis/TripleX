@@ -13,11 +13,11 @@
     tools:context="ra.a2340project.RegistrationActivity">
 
     <TextView
-        android:text="Submit Water Source Report"
+        android:text="Submit Water Purity Report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/source_submit_textView"
+        android:id="@+id/purity_submit_textView"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <ScrollView
@@ -35,7 +35,7 @@
 
             <!-- Location Label -->
             <TextView
-                android:id="@+id/source_location_textView"
+                android:id="@+id/purity_location_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Location"
@@ -49,7 +49,7 @@
                 android:layout_marginBottom="2dp">
 
                 <AutoCompleteTextView
-                    android:id="@+id/source_latitude"
+                    android:id="@+id/purity_latitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Latitude "
@@ -65,7 +65,7 @@
                 android:layout_marginBottom="2dp">
 
                 <AutoCompleteTextView
-                    android:id="@+id/source_longitude"
+                    android:id="@+id/purity_longitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Longitude"
@@ -74,26 +74,61 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <!-- Type Label -->
+            <!-- VirusPPM Label -->
             <TextView
-                android:id="@+id/type_textView"
+                android:id="@+id/purity_virusPPM_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Type of Water"
+                android:text="VirusPPM"
                 android:layout_marginTop="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <!-- Type Spinner -->
-            <Spinner
+            <!-- VirusPPM Input -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/purity_virusPPM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Virus PPM "
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Contaminant PPM Label -->
+            <TextView
+                android:id="@+id/purity_contaminantPPM_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contaminant PPM"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/type_spinner" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <!-- Contaminant PPM Input -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/purity_contaminantPPM"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Contaminant PPM "
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
+
 
             <!-- Condition Label -->
             <TextView
-                android:id="@+id/condition_textView"
+                android:id="@+id/purity_condition_textView"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Condition of Water"
@@ -104,11 +139,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:id="@+id/condition_spinner" />
+                android:layout_marginBottom="20dp"
+                android:id="@+id/purity_condition_spinner" />
 
             <!-- Submit Button -->
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/button_submit_source_report"
+                android:id="@+id/button_submit_purity_report"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

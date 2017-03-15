@@ -1,5 +1,7 @@
 package ra.a2340project;
 
+import android.content.Intent;
+
 import java.util.HashMap;
 
 /**
@@ -19,51 +21,46 @@ public class Model {
     /** HashMap containing all the water source reports */
     private HashMap<Integer, SourceReport> _sourceReportHashMap;
 
+    /** HashMap containing all the water purity reports */
+    private HashMap<Integer, PurityReport> _purityReportHashMap;
+
     /** the currently selected user */
     private User _currentUser;
 
     /** the currently selected source report */
     private SourceReport _currentSourceReport;
 
+    /** the currently selected purity report */
+    private PurityReport _currentPurityReport;
+
+    /** incremented number assigned to new reports  */
     public int reportNum;
 
-    /**
-     *
-     * @return the current user
+    /*******
+     * Getters and Setters
      */
     public User getCurrentUser() { return _currentUser; }
-
-    /**
-     *
-     * @param user the user being set as the current user
-     */
     public void setCurrentUser(User user) {
         _currentUser = user;
     }
 
-    /**
-     *
-     * @return the current source report
-     */
     public SourceReport getCurrentSourceReport() {return _currentSourceReport;}
-
-    /**
-     *
-     * @param report the source report being set to the current source report
-     */
     public void setCurrentSourceReport(SourceReport report) {_currentSourceReport = report;}
 
-    /**
-     *
-     * @return reportNum, the specific number of a report
-     */
-    public int getReportNum() {return reportNum;}
+    public PurityReport get_currentPurityReport() {return _currentPurityReport;}
+    public void set_currentPurityReport(PurityReport report) {_currentPurityReport = report;}
 
-    /**
-     *
-     * @param num the number the reportNum is being set to.
-     */
+    public int getReportNum() {return reportNum;}
     public void setReportNum(int num) {reportNum = num;}
+
+    public HashMap<String,User> getUserHashMap() {
+        return _userHashMap;
+    }
+
+    public HashMap<Integer,SourceReport> getSourceReportHashMap() {return _sourceReportHashMap;}
+
+    public HashMap<Integer, PurityReport> getPurityReportHashMap() {return _purityReportHashMap;}
+
 
     /*
      * makes new model
@@ -71,13 +68,8 @@ public class Model {
     public Model() {
         _userHashMap = new HashMap<>();
         _sourceReportHashMap = new HashMap<>();
+        _purityReportHashMap = new HashMap<>();
     }
-
-    public HashMap<String,User> getUserHashMap() {
-        return _userHashMap;
-    }
-
-    public HashMap<Integer,SourceReport> getSourceReportHashMap() {return _sourceReportHashMap;}
 
     /**
      * adds a new user to _userHashMap, with the key being the user's username,
@@ -110,6 +102,25 @@ public class Model {
     public boolean addSourceReport(int reportNum, SourceReport report) {
         if (!_sourceReportHashMap.containsKey(reportNum)) {
             _sourceReportHashMap.put(reportNum, report);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * adds a new purity source report to the _purityReportHasMap, with the key being the report's number,
+     * and the value being the report object.
+     *
+     * @param reportNum the report number of the report being added
+     * @param report the report object of the report being added
+     * @return true if the reportNumber didn't already exist in the HashMap and report is added,
+     *         false otherwise.
+     */
+    public boolean addPurityReport(int reportNum, PurityReport report) {
+        if (!_purityReportHashMap.containsKey(reportNum)) {
+            _purityReportHashMap.put(reportNum, report);
             return true;
         } else {
             return false;

@@ -35,8 +35,11 @@ public class ViewSourceReportActivity extends AppCompatActivity {
         TextView nameTextView = (TextView) findViewById(R.id.source_report_view_name);
         nameTextView.setText(report.getName());
 
-        TextView locationTextView = (TextView) findViewById(R.id.source_report_view_location);
-        locationTextView.setText(report.getLocation());
+        TextView latTextView = (TextView) findViewById(R.id.source_report_view_latitude);
+        latTextView.setText("Latitude: " + report.getLat());
+
+        TextView longTextView = (TextView) findViewById(R.id.source_report_view_longitude);
+        longTextView.setText("Longitude: " + report.getLong());
 
         TextView numTextView = (TextView) findViewById(R.id.source_report_view_reportNum);
         numTextView.setText(Integer.toString(report.getReportNum()));

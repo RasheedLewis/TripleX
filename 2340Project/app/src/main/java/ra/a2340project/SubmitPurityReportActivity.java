@@ -2,14 +2,13 @@ package ra.a2340project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 
 import java.util.Date;
 
@@ -17,34 +16,29 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by benhepburn on 3/2/17.
+ * Created by benhepburn on 3/14/17.
  */
 
-public class SubmitSourceReportActivity extends AppCompatActivity {
-    private static final String TAG = "SubmitSourceReportActivity";
+public class SubmitPurityReportActivity extends AppCompatActivity {
 
-    @Bind(R.id.source_latitude) EditText _latitude;
-    @Bind(R.id.source_longitude) EditText _longitude;
-    @Bind(R.id.type_spinner) Spinner _typeSpinner;
-    @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_source_report) Button _submitButton;
+    @Bind(R.id.purity_latitude) EditText _latitude;
+    @Bind(R.id.purity_longitude) EditText _longitude;
+    @Bind(R.id.purity_virusPPM) EditText _virusPPM;
+    @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
+    @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
+    @Bind(R.id.button_submit_purity_report) Button _submitButton;
 
-    private SourceReport report;
+    private PurityReport report;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
-        setContentView(R.layout.activity_submit_source_report);
+        setContentView(R.layout.activity_submit_purity_report);
         ButterKnife.bind(this);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, SourceReport.types);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, PurityReport.conditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        _typeSpinner.setAdapter(adapter);
-
-        ArrayAdapter<String> adapter1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, SourceReport.conditions);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        _conditionSpinner.setAdapter(adapter1);
-
+        _conditionSpinner.setAdapter(adapter);
 
         _submitButton.setOnClickListener(new View.OnClickListener() {
 
@@ -55,7 +49,7 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
     }
@@ -64,7 +58,7 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         Model model = Model.getInstance();
         Date date = new Date();
 
-        report = new SourceReport(model.getReportNum());
+        report = new PurityReport(model.getReportNum());
         model.setReportNum(model.getReportNum() + 1);
 
         int month = date.getMonth() + 1;
@@ -80,20 +74,23 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
 
         double lat = Double.parseDouble(_latitude.getText().toString());
         double longitude = Double.parseDouble(_longitude.getText().toString());
-
+        int virusPPM = Integer.parseInt(_virusPPM.getText().toString());
+        int contaminantPPM = Integer.parseInt(_contaminantPPM.getText().toString());
 
         report.setName(model.getCurrentUser().getName());
         report.setLat(lat);
         report.setLong(longitude);
-        report.setDate(currentDate);
+        report.setVirusPPM(virusPPM);
+        report.setContaminantPPM(contaminantPPM);
         report.setTime(currentTime);
-        report.setType((String) _typeSpinner.getSelectedItem());
+        report.setDate(currentDate);
         report.setCondition((String) _conditionSpinner.getSelectedItem());
 
-        model.addSourceReport(report.getReportNum(),report);
-        model.setCurrentSourceReport(report);
+        model.addPurityReport(report.getReportNum(),report);
+        model.set_currentPurityReport(report);
 
         _submitButton.setEnabled(false);
+
     }
 
     @Override
@@ -103,7 +100,4 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
-
-
 }

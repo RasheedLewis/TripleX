@@ -52,27 +52,39 @@
                 android:id="@+id/button_profile"
                 android:gravity="left"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <!-- Submit Water Source Report Button -->
             <Button
-                android:text="Submit Report"
+                android:text="Submit Source Report"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_source_report_submission"
                 android:gravity="left"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <!-- Logout Button -->
+
+            <!-- Submit Water Purity Report Button -->
             <Button
-                android:text="View Reports"
+                android:text="Submit Purity Report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_purity_report_submission"
+                android:gravity="left"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <!-- View Source Reports Button -->
+            <Button
+                android:text="View Source Reports"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_view_reports"
                 android:gravity="left"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_logout"

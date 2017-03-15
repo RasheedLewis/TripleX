@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Camera;
 import android.location.Geocoder;
 import android.location.Address;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Bind(R.id.button_profile) Button _profileButton;
     @Bind(R.id.button_source_report_submission) Button _submitReportButton;
     @Bind(R.id.button_view_reports) Button _viewReportsButton;
+    @Bind(R.id.button_purity_report_submission) Button _submitPurityReportButton;
 
     Model model = Model.getInstance();
 
@@ -123,6 +126,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
+
+        _submitPurityReportButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (model.getCurrentUser().getStatus() != "Worker" && model.getCurrentUser().getStatus() != "Manager") {
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle("Error");
+                    alertDialog.setMessage("You are not authorized to submit water purity reports.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL,"OK",new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int i) {
+                            dialog.dismiss();
+                        }
+                    });
+                    alertDialog.show();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), SubmitPurityReportActivity.class);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+            }
+        });
     }
 
     @Override
@@ -138,17 +165,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         googleMap.setOnMarkerClickListener(this);
 
         Collection<SourceReport> reports = model.getSourceReportHashMap().values();
+        Collection<PurityReport> purityReports = model.getPurityReportHashMap().values();
 
         Marker marker;
         for (SourceReport report : reports) {
-            String location = report.getLocation();
-            if (location != null) {
-                LatLng latLong = getLocationFromAddress(getApplicationContext(), location);
-                if (latLong != null) {
-                    marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
-                    marker.setTag(report);
-                }
+            LatLng latLong = new LatLng(report.getLat(),report.getLong());
+            if (latLong != null) {
+                marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
+                marker.setTag(report);
+            }
+        }
+
+        for (PurityReport report : purityReports) {
+            LatLng latLong = new LatLng(report.getLat(),report.getLong());
+            if (latLong != null) {
+                marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("PurityReport"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
+                marker.setTag(report);
             }
         }
 

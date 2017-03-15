@@ -61,9 +61,18 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
-            <!-- Location -->
+            <!-- Latitude -->
             <TextView
-                android:id="@+id/source_report_view_location"
+            android:id="@+id/source_report_view_latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:paddingBottom="20dp"/>
+
+            <!-- Longitude -->
+            <TextView
+                android:id="@+id/source_report_view_longitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""

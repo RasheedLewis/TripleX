@@ -101,7 +101,7 @@ public class ViewSourceReports extends AppCompatActivity {
               textview and the string rep of a course in the other.
              */
             holder.reportID.setText("" + reportList.get(key).getReportNum());
-            holder.reportLOC.setText(reportList.get(key).getLocation());
+            holder.reportLOC.setText("(" + reportList.get(key).getLat() + ", " + reportList.get(key).getLong() + ")");
             holder.reportTYPE.setText(reportList.get(key).getType());
             holder.reportCOND.setText(reportList.get(key).getCondition());
 

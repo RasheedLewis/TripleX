@@ -14,7 +14,8 @@ import java.util.Date;
 public class SourceReport implements Parcelable {
 
     private String _name;
-    private String _location;
+    private double _lat;
+    private double _long;
     private String _type;
     private String _condition;
     private int _reportNum;
@@ -40,8 +41,11 @@ public class SourceReport implements Parcelable {
     public String getName() {return _name;}
     public void setName(String name) {_name = name;}
 
-    public String getLocation() {return _location;}
-    public void setLocation(String location) {_location = location;}
+    public double getLat() {return _lat;}
+    public void setLat(double lat) {_lat = lat;}
+
+    public double getLong() {return _long;}
+    public void setLong(double longitude) {_long = longitude;}
 
     public String getType() {return _type;}
     public void setType(String type) {_type = type;}
@@ -61,7 +65,8 @@ public class SourceReport implements Parcelable {
 
     private SourceReport(Parcel in) {
         _name = in.readString();
-        _location = in.readString();
+        _lat = in.readDouble();
+        _long = in.readDouble();
         _type = in.readString();
         _condition = in.readString();
         _reportNum = in.readInt();
@@ -75,7 +80,8 @@ public class SourceReport implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(_name);
-        dest.writeString(_location);
+        dest.writeDouble(_lat);
+        dest.writeDouble(_long);
         dest.writeString(_type);
         dest.writeString(_condition);
         dest.writeInt(_reportNum);
