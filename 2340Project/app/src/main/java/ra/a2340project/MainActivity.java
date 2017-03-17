@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (latLong != null) {
                 marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
-                marker.setTag(report);
+                marker.setTag(report.getReportNum());
             }
         }
 
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (latLong != null) {
                 marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("PurityReport"));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
-                marker.setTag(report);
+                marker.setTag(report.getReportNum());
             }
         }
 
@@ -190,12 +190,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onMarkerClick(Marker marker){
-        SourceReport report = (SourceReport) marker.getTag();
-        model.setCurrentSourceReport(report);
-        Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        if (model.getSourceReportHashMap().containsKey(marker.getTag())) {
+            SourceReport report = model.getSourceReportHashMap().get(marker.getTag());
+            model.setCurrentSourceReport(report);
+            Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+
+        if (model.getPurityReportHashMap().containsKey(marker.getTag())) {
+            PurityReport report = model.getPurityReportHashMap().get(marker.getTag());
+            model.set_currentPurityReport(report);
+            Intent intent = new Intent(getApplicationContext(), ViewPurityReportActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
         return false;
     }
 
@@ -257,33 +268,5 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            ((MainActivity) getActivity()).onDialogDismissed();
 //        }
 //    }
-
-    public LatLng getLocationFromAddress(Context context, String strAddress) {
-        Geocoder coder= new Geocoder(context);
-        List<Address> address;
-        LatLng p1 = null;
-
-        try
-        {
-            address = coder.getFromLocationName(strAddress, 5);
-            if(address==null)
-            {
-                return null;
-            }
-            Address location = address.get(0);
-            location.getLatitude();
-            location.getLongitude();
-
-            p1 = new LatLng(location.getLatitude(), location.getLongitude());
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return p1;
-
-    }
-
-
 
 }

@@ -51,6 +51,8 @@
         <activity android:name=".ViewSourceReportActivity"></activity>
 
         <activity android:name=".SubmitPurityReportActivity"></activity>
+
+        <activity android:name=".ViewPurityReportActivity"></activity>
     </application>
 
 </manifest>
