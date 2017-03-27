@@ -14,7 +14,7 @@
             android:text="Water Quality Reports List"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/report_list_title"
+            android:id="@+id/purity_list_title"
             android:textStyle="normal|bold"
             android:textAlignment="center"
             android:textSize="24sp" />
@@ -29,7 +29,7 @@
                 android:text="Number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/report_list_number"
+                android:id="@+id/purity_list_number"
                 android:textSize="18sp"
                 android:layout_weight="0.10"
                 android:textAlignment="center" />
@@ -38,7 +38,7 @@
                 android:text="Condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/report_list_name"
+                android:id="@+id/purity_list_cond"
                 android:layout_weight="0.20"
                 android:textSize="18sp"
                 android:textAlignment="center" />
@@ -47,7 +47,7 @@
                 android:text="VirusPPM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/report_list_type"
+                android:id="@+id/purity_list_virus"
                 android:layout_weight="0.13"
                 android:textSize="18sp"
                 />
@@ -56,7 +56,7 @@
                 android:text="ContamPPM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/report_list_cond"
+                android:id="@+id/purity_list_cont"
                 android:layout_weight="0.03"
                 android:textSize="18sp"
                 />

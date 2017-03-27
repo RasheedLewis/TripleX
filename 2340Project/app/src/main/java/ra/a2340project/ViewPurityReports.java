@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  */
 
 public class ViewPurityReports extends AppCompatActivity {
-    private static final String TAG = "ViewSourceReportActivity";
+    private static final String TAG = "ViewPurityReportActivity";
 
 
     @Override
