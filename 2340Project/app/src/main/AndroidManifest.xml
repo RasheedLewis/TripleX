@@ -53,6 +53,8 @@
         <activity android:name=".SubmitPurityReportActivity"></activity>
 
         <activity android:name=".ViewPurityReportActivity"></activity>
+
+        <activity android:name=".ViewPurityReports"></activity>
     </application>
 
 </manifest>

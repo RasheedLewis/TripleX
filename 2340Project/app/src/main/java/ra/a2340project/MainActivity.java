@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Bind(R.id.button_source_report_submission) Button _submitReportButton;
     @Bind(R.id.button_view_reports) Button _viewReportsButton;
     @Bind(R.id.button_purity_report_submission) Button _submitPurityReportButton;
+    @Bind(R.id.button_view_purity) Button _viewPurityReports;
 
     Model model = Model.getInstance();
 
@@ -126,6 +127,31 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
+        // Create On Click Functionality for Purity Reports List
+        // Secures only manages can click
+        _viewPurityReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (model.getCurrentUser().getStatus() != "Manager") {
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle("Error");
+                    alertDialog.setMessage("You are not authorized to submit water purity reports.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL,"OK",new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int i) {
+                            dialog.dismiss();
+                        }
+                    });
+                    alertDialog.show();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), ViewPurityReports.class);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+            }
+            });
+
 
         _submitPurityReportButton.setOnClickListener(new View.OnClickListener() {
 

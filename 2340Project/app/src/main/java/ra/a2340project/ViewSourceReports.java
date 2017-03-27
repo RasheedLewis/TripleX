@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by z_JamesBailey on 3/6/17.
+ * Displays list of Source Reports
  */
 
 public class ViewSourceReports extends AppCompatActivity {
@@ -61,12 +62,12 @@ public class ViewSourceReports extends AppCompatActivity {
             extends RecyclerView.Adapter<SimpleCourseRecyclerViewAdapter.ViewHolder> {
 
         /**
-         * Collection of the items to be shown in this list.
+         * Collection of the Source Reports to be shown in the view.
          */
         private final HashMap<Integer, SourceReport> reportList;
 
         /**
-         * set the items to be used by the adapter
+         * set the source reports to be used by the adapter
          * @param items the list of items to be displayed in the recycler view
          */
         public SimpleCourseRecyclerViewAdapter(HashMap<Integer, SourceReport> items) {

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- Purity Reports Title -->
+        <TextView
+            android:text="Water Quality Reports List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/report_list_title"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+            <!-- Purity Reports List Headers -->
+            <TextView
+                android:text="Number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/report_list_number"
+                android:textSize="18sp"
+                android:layout_weight="0.10"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/report_list_name"
+                android:layout_weight="0.20"
+                android:textSize="18sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="VirusPPM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/report_list_type"
+                android:layout_weight="0.13"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:text="ContamPPM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/report_list_cond"
+                android:layout_weight="0.03"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/view_reports_list" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

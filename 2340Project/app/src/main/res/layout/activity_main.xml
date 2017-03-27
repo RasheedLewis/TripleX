@@ -85,6 +85,15 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+            <!-- View Purity Reports Button -->
+            <Button
+                android:text="View Purity Reports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_view_purity"
+                android:gravity="left"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_logout"
