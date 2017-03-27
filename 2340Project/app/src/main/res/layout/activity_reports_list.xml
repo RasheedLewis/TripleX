@@ -26,7 +26,7 @@
             android:baselineAligned="false">
 
             <TextView
-                android:text="Date"
+                android:text="Number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/report_list_number"
