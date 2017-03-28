@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;

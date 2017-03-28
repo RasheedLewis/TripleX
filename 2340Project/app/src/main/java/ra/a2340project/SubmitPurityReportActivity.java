@@ -58,8 +58,8 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         Model model = Model.getInstance();
         Date date = new Date();
 
-        report = new PurityReport(model.getReportNum());
-        model.setReportNum(model.getReportNum() + 1);
+        report = new PurityReport(model.getPurityReportNum());
+        model.setPurityReportNum(model.getPurityReportNum() + 1);
 
         int month = date.getMonth() + 1;
         int day = date.getDate();

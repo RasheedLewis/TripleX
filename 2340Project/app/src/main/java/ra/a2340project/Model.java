@@ -35,6 +35,7 @@ public class Model {
 
     /** incremented number assigned to new reports  */
     public int reportNum;
+    public int purityReportNum;
 
     /*******
      * Getters and Setters
@@ -52,6 +53,9 @@ public class Model {
 
     public int getReportNum() {return reportNum;}
     public void setReportNum(int num) {reportNum = num;}
+
+    public int getPurityReportNum() {return purityReportNum;}
+    public void setPurityReportNum(int num) {purityReportNum = num;}
 
     public HashMap<String,User> getUserHashMap() {
         return _userHashMap;
@@ -113,14 +117,14 @@ public class Model {
      * adds a new purity source report to the _purityReportHasMap, with the key being the report's number,
      * and the value being the report object.
      *
-     * @param reportNum the report number of the report being added
+     * @param purityReportNum the report number of the report being added
      * @param report the report object of the report being added
      * @return true if the reportNumber didn't already exist in the HashMap and report is added,
      *         false otherwise.
      */
-    public boolean addPurityReport(int reportNum, PurityReport report) {
-        if (!_purityReportHashMap.containsKey(reportNum)) {
-            _purityReportHashMap.put(reportNum, report);
+    public boolean addPurityReport(int purityReportNum, PurityReport report) {
+        if (!_purityReportHashMap.containsKey(purityReportNum)) {
+            _purityReportHashMap.put(purityReportNum, report);
             return true;
         } else {
             return false;
