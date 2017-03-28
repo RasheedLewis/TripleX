@@ -41,6 +41,7 @@ public class ViewPurityReports extends AppCompatActivity {
         View recyclerView = findViewById(R.id.view_purity_list);
         assert recyclerView != null;
         //Step 2.  Hook up the adapter to the view
+        Log.d("Recycler View Thingy",recyclerView.toString());
         setupRecyclerView((RecyclerView) recyclerView);
     }
     /**
@@ -103,8 +104,8 @@ public class ViewPurityReports extends AppCompatActivity {
              */
             holder.purityID.setText("" + purityList.get(key).getReportNum());
             holder.purityCOND.setText("(" + purityList.get(key).getCondition());
-            holder.purityVIRUS.setText(purityList.get(key).getVirusPPM());
-            holder.purityCONT.setText(purityList.get(key).getContaminantPPM());
+           holder.purityVIRUS.setText(purityList.get(key).getVirusPPM());
+           holder.purityCONT.setText(purityList.get(key).getContaminantPPM());
 
         }
 
@@ -132,8 +133,8 @@ public class ViewPurityReports extends AppCompatActivity {
                 mView = view;
                 purityID = (TextView) view.findViewById(R.id.purity_Num);
                 purityCOND = (TextView) view.findViewById(R.id.purity_Cond);
-                purityVIRUS = (TextView) view.findViewById(R.id.purity_virusPPM);
-                purityCONT = (TextView) view.findViewById(R.id.purity_contaminantPPM);
+                purityVIRUS = (TextView) view.findViewById(R.id.purity_Virus);
+                purityCONT = (TextView) view.findViewById(R.id.purity_Cont);
             }
         }
     }
