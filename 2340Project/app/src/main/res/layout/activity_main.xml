@@ -95,6 +95,16 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+            <!-- View Historical Report Button -->
+            <Button
+                android:text="View Historical Report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_view_historical_report"
+                android:gravity="left"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_logout"
                 android:layout_width="fill_parent"

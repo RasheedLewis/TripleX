@@ -102,10 +102,10 @@ public class ViewPurityReports extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            holder.purityID.setText("      " + purityList.get(key).getReportNum());
+            holder.purityID.setText("   " + purityList.get(key).getReportNum());
             holder.purityCOND.setText("      " + purityList.get(key).getCondition());
-           holder.purityVIRUS.setText("      " + purityList.get(key).getVirusPPM());
-           holder.purityCONT.setText("      " + purityList.get(key).getContaminantPPM());
+           holder.purityVIRUS.setText("    " + purityList.get(key).getVirusPPM());
+           holder.purityCONT.setText("    " + purityList.get(key).getContaminantPPM());
 
         }
 

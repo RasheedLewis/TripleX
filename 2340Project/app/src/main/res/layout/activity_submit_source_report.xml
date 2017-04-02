@@ -9,8 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:weightSum="1"
-    tools:context="ra.a2340project.RegistrationActivity">
+    android:weightSum="1">
 
     <TextView
         android:text="Submit Water Source Report"
@@ -108,14 +107,14 @@
 
             <!-- Submit Button -->
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/button_submit_source_report"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:padding="12dp"
-                android:gravity="center"
-                android:text="Submit"/>
+            android:id="@+id/button_submit_source_report"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:gravity="center"
+            android:text="Submit"/>
 
         </LinearLayout>
 

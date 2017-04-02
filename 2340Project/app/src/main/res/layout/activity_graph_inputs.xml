@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Enter Graph Requirements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/graph_input_title_textview"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="40dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <!-- Location Label -->
+            <TextView
+                android:id="@+id/graph_input_location_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <!-- Latitude Input -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/graph_input_latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Latitude "
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Longitude Input -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/graph_input_longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Longitude "
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Type Label -->
+            <TextView
+                android:id="@+id/graph_spinner_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Virus or Contaminant PPM?"
+                android:layout_marginTop="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <!-- Type Spinner -->
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/graph_input_spinner" />
+
+            <!-- Year Label -->
+            <TextView
+                android:id="@+id/graph_input_year_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Year"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <!-- Year Input -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/graph_input_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Year "
+                    android:inputType="text" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Graph Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/graph_input_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:gravity="center"
+                android:text="Graph"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

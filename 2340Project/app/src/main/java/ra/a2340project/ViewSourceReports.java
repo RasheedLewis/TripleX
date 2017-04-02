@@ -103,10 +103,10 @@ public class ViewSourceReports extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            holder.reportID.setText("" + reportList.get(key).getReportNum());
-            holder.reportLOC.setText("(" + reportList.get(key).getLat() + ", " + reportList.get(key).getLong() + ")");
-            holder.reportTYPE.setText(reportList.get(key).getType());
-            holder.reportCOND.setText(reportList.get(key).getCondition());
+            holder.reportID.setText("   " + reportList.get(key).getReportNum());
+            holder.reportLOC.setText("   (" + reportList.get(key).getLat() + ", " + reportList.get(key).getLong() + ")");
+            holder.reportTYPE.setText("   " + reportList.get(key).getType());
+            holder.reportCOND.setText("   " + reportList.get(key).getCondition());
 
         }
 
