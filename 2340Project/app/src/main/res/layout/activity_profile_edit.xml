@@ -14,7 +14,7 @@
 
     <!-- Profile Title -->
     <TextView
-        android:text="Profile"
+        android:text="@string/Profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profile_edit_name_label"
-                android:text="Name"
+                android:text="@string/Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -55,7 +55,7 @@
                     android:id="@+id/profile_edit_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Name"
+                    android:hint="@string/Enter_Name"
                     android:inputType="text"
                     android:maxLines="1" />
 
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profile_edit_email_label"
-                android:text="Email"
+                android:text="@string/Email"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -82,7 +82,7 @@
                     android:id="@+id/profile_edit_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Email"
+                    android:hint="@string/Enter_Email"
                     android:inputType="text"
                     android:maxLines="1" />
 
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profile_edit_username_label"
-                android:text="Username"
+                android:text="@string/Username"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -109,7 +109,7 @@
                     android:id="@+id/profile_edit_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Username"
+                    android:hint="@string/Enter_Username"
                     android:inputType="text"
                     android:maxLines="1" />
 
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/profile_edit_status_label"
-                android:text="Status"
+                android:text="@string/Status"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -140,7 +140,7 @@
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
                 android:gravity="center"
-                android:text="Done"/>
+                android:text="@string/Done"/>
 
         </LinearLayout>
 

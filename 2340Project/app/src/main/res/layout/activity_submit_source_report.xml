@@ -12,7 +12,7 @@
     android:weightSum="1">
 
     <TextView
-        android:text="Submit Water Source Report"
+        android:text="@string/Submit_Water_Source"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -37,7 +37,7 @@
                 android:id="@+id/source_location_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Location"
+                android:text="@string/Location"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <!-- Latitude Input -->
@@ -51,7 +51,7 @@
                     android:id="@+id/source_latitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Latitude "
+                    android:hint="@string/Enter_Latitute"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
@@ -67,7 +67,7 @@
                     android:id="@+id/source_longitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Longitude"
+                    android:hint="@string/Enter_Longitude"
                     android:inputType="text"
                     android:maxLines="1" />
 
@@ -78,7 +78,7 @@
                 android:id="@+id/type_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Type of Water"
+                android:text="@string/Type_Water"
                 android:layout_marginTop="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -95,7 +95,7 @@
                 android:id="@+id/condition_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Condition of Water"
+                android:text="@string/Cond_Water"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <!-- Condition Spinner -->
@@ -114,7 +114,7 @@
             android:layout_marginBottom="24dp"
             android:padding="12dp"
             android:gravity="center"
-            android:text="Submit"/>
+            android:text="@string/Submit"/>
 
         </LinearLayout>
 
