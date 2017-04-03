@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 
 public class ViewPurityReportActivity extends AppCompatActivity {
 
-    @Bind(R.id.purity_report_view_BackButton) Button _backButton;
+    private @Bind(R.id.purity_report_view_BackButton) Button _backButton;
 
     private PurityReport report;
 

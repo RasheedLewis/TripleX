@@ -20,11 +20,11 @@ import butterknife.ButterKnife;
 public class ProfileEditActivity extends AppCompatActivity {
     private static final String TAG = "ProfileEditActivity";
 
-    @Bind(R.id.profile_edit_name) EditText _profileNameText;
-    @Bind(R.id.profile_edit_email) EditText _profileEmailText;
-    @Bind(R.id.profile_edit_username) EditText _profileUsernameText;
-    @Bind(R.id.status_spinner_profile_edit) Spinner _profileStatusSpinner;
-    @Bind(R.id.button_profile_edit_Done) Button _profileDoneButton;
+    private @Bind(R.id.profile_edit_name) EditText _profileNameText;
+    private @Bind(R.id.profile_edit_email) EditText _profileEmailText;
+    private @Bind(R.id.profile_edit_username) EditText _profileUsernameText;
+    private @Bind(R.id.status_spinner_profile_edit) Spinner _profileStatusSpinner;
+    private @Bind(R.id.button_profile_edit_Done) Button _profileDoneButton;
 
     private User _user;
 
@@ -52,7 +52,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         });
     }
 
-    public void edit() {
+    private void edit() {
         Log.d(TAG, "Edit");
         Model model = Model.getInstance();
 
@@ -73,7 +73,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         _profileDoneButton.setEnabled(false);
     }
 
-    public boolean validate () {
+    private boolean validate () {
         boolean valid = true;
         Model model = Model.getInstance();
         _user = model.getCurrentUser();
@@ -90,7 +90,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         return valid;
     }
 
-    public void onEditFailed() {
+    private void onEditFailed() {
         _profileDoneButton.setEnabled(true);
     }
 

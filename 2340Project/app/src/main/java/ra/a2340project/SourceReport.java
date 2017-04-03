@@ -22,8 +22,8 @@ public class SourceReport implements Parcelable {
     private String _date;
     private String _time;
 
-    public static List<String> types = Arrays.asList("Bottled","Well","Stream","Lake","Spring","Other");
-    public static List<String> conditions = Arrays.asList("Waste","Treatable-Clear","Treatable-Muddy","Potable");
+    public static final List<String> types = Arrays.asList("Bottled","Well","Stream","Lake","Spring","Other");
+    public static final List<String> conditions = Arrays.asList("Waste","Treatable-Clear","Treatable-Muddy","Potable");
 
     /**
      *

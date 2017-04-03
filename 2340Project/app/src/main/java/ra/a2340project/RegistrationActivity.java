@@ -25,13 +25,13 @@ import butterknife.ButterKnife;
 public class RegistrationActivity extends AppCompatActivity{
     private static final String TAG = "RegistrationActivity";
 
-    @Bind(R.id.name) EditText _accountNameText;
-    @Bind(R.id.email) EditText _accountEmailText;
-    @Bind(R.id.username) EditText _accountUsernameText;
-    @Bind(R.id.password) EditText _accountPasswordText;
-    @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
-    @Bind(R.id.status_spinner) Spinner _statusSpinner;
-    @Bind(R.id.button_register) Button _registerButton;
+    private @Bind(R.id.name) EditText _accountNameText;
+    private @Bind(R.id.email) EditText _accountEmailText;
+    private @Bind(R.id.username) EditText _accountUsernameText;
+    private @Bind(R.id.password) EditText _accountPasswordText;
+    private @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
+    private @Bind(R.id.status_spinner) Spinner _statusSpinner;
+    private @Bind(R.id.button_register) Button _registerButton;
 
 
     private User _user;
@@ -65,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity{
      * Saves all entered data when registration button is entered
      * Adds new user to user hash map
      */
-    public void register() {
+    private void register() {
         Log.d(TAG, "Register");
         Model model = Model.getInstance();
         if (!validate()) {
@@ -87,7 +87,7 @@ public class RegistrationActivity extends AppCompatActivity{
         _registerButton.setEnabled(false);
     }
 
-    public void onRegisterFailed() {
+    private void onRegisterFailed() {
         _registerButton.setEnabled(true);
     }
 
@@ -104,7 +104,7 @@ public class RegistrationActivity extends AppCompatActivity{
      *
      * @return boolean indicating if all information entered is valid
      */
-    public boolean validate() {
+    private boolean validate() {
         Model model = Model.getInstance();
 
         boolean valid = true;

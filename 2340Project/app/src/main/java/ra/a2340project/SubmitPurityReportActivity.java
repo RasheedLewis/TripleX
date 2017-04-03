@@ -21,12 +21,12 @@ import butterknife.ButterKnife;
 
 public class SubmitPurityReportActivity extends AppCompatActivity {
 
-    @Bind(R.id.purity_latitude) EditText _latitude;
-    @Bind(R.id.purity_longitude) EditText _longitude;
-    @Bind(R.id.purity_virusPPM) EditText _virusPPM;
-    @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
-    @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_purity_report) Button _submitButton;
+    private @Bind(R.id.purity_latitude) EditText _latitude;
+    private @Bind(R.id.purity_longitude) EditText _longitude;
+    private @Bind(R.id.purity_virusPPM) EditText _virusPPM;
+    private @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
+    private @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
+    private @Bind(R.id.button_submit_purity_report) Button _submitButton;
 
     private PurityReport report;
 
@@ -54,7 +54,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         });
     }
 
-    public void submit() {
+    private void submit() {
         Model model = Model.getInstance();
         Date date = new Date();
 

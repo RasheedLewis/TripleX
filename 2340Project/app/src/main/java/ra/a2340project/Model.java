@@ -12,19 +12,19 @@ import java.util.HashMap;
 
 public class Model {
 
-    public static final Model _instance = new Model();
+    private static final Model _instance = new Model();
     public static Model getInstance() {
         return _instance;
     }
 
     /** HashMap containing all the users */
-    private HashMap<String, User> _userHashMap;
+    private final HashMap<String, User> _userHashMap;
 
     /** HashMap containing all the water source reports */
-    private HashMap<Integer, SourceReport> _sourceReportHashMap;
+    private final HashMap<Integer, SourceReport> _sourceReportHashMap;
 
     /** HashMap containing all the water purity reports */
-    private HashMap<Integer, PurityReport> _purityReportHashMap;
+    private final HashMap<Integer, PurityReport> _purityReportHashMap;
 
     /** the currently selected user */
     private User _currentUser;
@@ -36,13 +36,13 @@ public class Model {
     private PurityReport _currentPurityReport;
 
     /** incremented number assigned to new reports  */
-    public int reportNum;
-    public int purityReportNum;
+    private int reportNum;
+    private int purityReportNum;
 
     /** the input conditions for the historical graph */
-    public LatLng graphLocation;
-    public int graphYear;
-    public String graphType;
+    private LatLng graphLocation;
+    private int graphYear;
+    private String graphType;
 
     /*******
      * Getters and Setters
@@ -85,7 +85,7 @@ public class Model {
     /*
      * makes new model
      */
-    public Model() {
+    private Model() {
         _userHashMap = new HashMap<>();
         _sourceReportHashMap = new HashMap<>();
         _purityReportHashMap = new HashMap<>();
@@ -100,12 +100,9 @@ public class Model {
      * @return true if the username didn't already exist in the hashmap and the key, value pair is added
      *         false if the username is already in the hashmap and the user isn't added
      */
-    public boolean addUser(String username, User user) {
+    public void addUser(String username, User user) {
         if (!_userHashMap.containsKey(username)) {
-            _userHashMap.put(username,user);
-            return true;
-        } else {
-            return false;
+            _userHashMap.put(username, user);
         }
     }
 
@@ -119,12 +116,9 @@ public class Model {
      * @return true if the reportNumber didn't already exist in the HashMap and report is added,
      *         false otherwise.
      */
-    public boolean addSourceReport(int reportNum, SourceReport report) {
+    public void addSourceReport(int reportNum, SourceReport report) {
         if (!_sourceReportHashMap.containsKey(reportNum)) {
             _sourceReportHashMap.put(reportNum, report);
-            return true;
-        } else {
-            return false;
         }
     }
 
@@ -138,12 +132,9 @@ public class Model {
      * @return true if the reportNumber didn't already exist in the HashMap and report is added,
      *         false otherwise.
      */
-    public boolean addPurityReport(int purityReportNum, PurityReport report) {
+    public void addPurityReport(int purityReportNum, PurityReport report) {
         if (!_purityReportHashMap.containsKey(purityReportNum)) {
             _purityReportHashMap.put(purityReportNum, report);
-            return true;
-        } else {
-            return false;
         }
     }
 

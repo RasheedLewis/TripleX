@@ -24,15 +24,15 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class BuildGraph extends AppCompatActivity {
-    Model model = Model.getInstance();
+    private final Model model = Model.getInstance();
 
     private LatLng location;
     private int year;
     private String type;
 
-    @Bind(R.id.button_graph_back) Button _backButton;
+    private @Bind(R.id.button_graph_back) Button _backButton;
 
-    private HashMap<Integer, Month> graphHashMap = new HashMap<>();
+    private final HashMap<Integer, Month> graphHashMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

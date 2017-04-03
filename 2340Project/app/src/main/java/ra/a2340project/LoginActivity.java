@@ -24,10 +24,10 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
 
 
-    @Bind(R.id.username) EditText _usernameText;
-    @Bind(R.id.password) EditText _passwordText;
-    @Bind(R.id.btn_login) Button _loginButton;
-    @Bind(R.id.link_signup) TextView _signupLink;
+    private @Bind(R.id.username) EditText _usernameText;
+    private @Bind(R.id.password) EditText _passwordText;
+    private @Bind(R.id.btn_login) Button _loginButton;
+    private @Bind(R.id.link_signup) TextView _signupLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void login() {
+    private void login() {
         Log.d(TAG, "Login");
 
         if (!validate()) {
@@ -115,18 +115,14 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
-        //_loginButton.setEnabled(true);
-        // finish();
-    }
 
-    public void onLoginFailed() {
+    private void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
 
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = true;
 
         Model model = Model.getInstance();

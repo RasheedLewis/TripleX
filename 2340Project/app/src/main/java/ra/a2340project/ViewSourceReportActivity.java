@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 public class ViewSourceReportActivity extends AppCompatActivity {
 
 
-    @Bind(R.id.source_report_view_BackButton) Button _backButton;
+    private @Bind(R.id.source_report_view_BackButton) Button _backButton;
 
     private SourceReport report;
 

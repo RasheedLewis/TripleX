@@ -23,11 +23,11 @@ import butterknife.ButterKnife;
 public class SubmitSourceReportActivity extends AppCompatActivity {
     private static final String TAG = "SubmitSourceReportActivity";
 
-    @Bind(R.id.source_latitude) EditText _latitude;
-    @Bind(R.id.source_longitude) EditText _longitude;
-    @Bind(R.id.type_spinner) Spinner _typeSpinner;
-    @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_source_report) Button _submitButton;
+    private @Bind(R.id.source_latitude) EditText _latitude;
+    private @Bind(R.id.source_longitude) EditText _longitude;
+    private @Bind(R.id.type_spinner) Spinner _typeSpinner;
+    private @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
+    private @Bind(R.id.button_submit_source_report) Button _submitButton;
 
     private SourceReport report;
 
@@ -60,7 +60,7 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         });
     }
 
-    public void submit() {
+    private void submit() {
         Model model = Model.getInstance();
         Date date = new Date();
 

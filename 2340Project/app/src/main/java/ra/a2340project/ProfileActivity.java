@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
 
-    @Bind(R.id.button_profile_Edit) Button _profileEditButton;
+    private @Bind(R.id.button_profile_Edit) Button _profileEditButton;
 
     private User user;
 

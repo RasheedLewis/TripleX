@@ -24,7 +24,7 @@ public class PurityReport implements Parcelable {
     private int _virusPPM;
     private int _contaminantPPM;
 
-    public static List<String> conditions = Arrays.asList("Safe","Treatable","Unsafe");
+    public static final List<String> conditions = Arrays.asList("Safe","Treatable","Unsafe");
 
 
     /**

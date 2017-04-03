@@ -21,15 +21,14 @@ import butterknife.ButterKnife;
  */
 
 public class GraphInputActivity extends AppCompatActivity{
-    private static final String TAG = "GraphInputActivity";
 
-    @Bind(R.id.graph_input_latitude) EditText _latitude;
-    @Bind(R.id.graph_input_longitude) EditText _longitude;
-    @Bind(R.id.graph_input_year) EditText _year;
-    @Bind(R.id.graph_input_spinner) Spinner _spinner;
-    @Bind(R.id.graph_input_button) Button _graphButton;
+    private @Bind(R.id.graph_input_latitude) EditText _latitude;
+    private @Bind(R.id.graph_input_longitude) EditText _longitude;
+    private @Bind(R.id.graph_input_year) EditText _year;
+    private @Bind(R.id.graph_input_spinner) Spinner _spinner;
+    private @Bind(R.id.graph_input_button) Button _graphButton;
 
-    public static List<String> choices = Arrays.asList("Virus","Contaminant");
+    private final static List<String> choices = Arrays.asList("Virus","Contaminant");
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -55,7 +54,7 @@ public class GraphInputActivity extends AppCompatActivity{
         });
     }
 
-    public void graph() {
+    private void graph() {
         Model model = Model.getInstance();
 
         double lat = Double.parseDouble(_latitude.getText().toString());
