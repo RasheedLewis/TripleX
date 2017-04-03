@@ -24,10 +24,10 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
 
 
-    private @Bind(R.id.username) EditText _usernameText;
-    private @Bind(R.id.password) EditText _passwordText;
-    private @Bind(R.id.btn_login) Button _loginButton;
-    private @Bind(R.id.link_signup) TextView _signupLink;
+    @Bind(R.id.username) EditText _usernameText;
+    @Bind(R.id.password) EditText _passwordText;
+    @Bind(R.id.btn_login) Button _loginButton;
+    @Bind(R.id.link_signup) TextView _signupLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

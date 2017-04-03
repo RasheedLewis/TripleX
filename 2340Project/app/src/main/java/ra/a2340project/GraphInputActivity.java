@@ -22,11 +22,11 @@ import butterknife.ButterKnife;
 
 public class GraphInputActivity extends AppCompatActivity{
 
-    private @Bind(R.id.graph_input_latitude) EditText _latitude;
-    private @Bind(R.id.graph_input_longitude) EditText _longitude;
-    private @Bind(R.id.graph_input_year) EditText _year;
-    private @Bind(R.id.graph_input_spinner) Spinner _spinner;
-    private @Bind(R.id.graph_input_button) Button _graphButton;
+    @Bind(R.id.graph_input_latitude) EditText _latitude;
+    @Bind(R.id.graph_input_longitude) EditText _longitude;
+    @Bind(R.id.graph_input_year) EditText _year;
+    @Bind(R.id.graph_input_spinner) Spinner _spinner;
+    @Bind(R.id.graph_input_button) Button _graphButton;
 
     private final static List<String> choices = Arrays.asList("Virus","Contaminant");
 

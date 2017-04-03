@@ -17,9 +17,7 @@ import butterknife.ButterKnife;
 public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
 
-    private @Bind(R.id.button_profile_Edit) Button _profileEditButton;
-
-    private User user;
+    @Bind(R.id.button_profile_Edit) Button _profileEditButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
+        User user;
         Model model = Model.getInstance();
         user = model.getCurrentUser();
 

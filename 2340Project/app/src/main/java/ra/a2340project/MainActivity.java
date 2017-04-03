@@ -46,13 +46,13 @@ import butterknife.Bind;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener {
 
-    private @Bind(R.id.btn_logout) Button _logoutButton;
-    private @Bind(R.id.button_profile) Button _profileButton;
-    private @Bind(R.id.button_source_report_submission) Button _submitReportButton;
-    private @Bind(R.id.button_view_reports) Button _viewReportsButton;
-    private @Bind(R.id.button_purity_report_submission) Button _submitPurityReportButton;
-    private @Bind(R.id.button_view_purity) Button _viewPurityReports;
-    private @Bind(R.id.button_view_historical_report) Button _viewHistoryReport;
+    @Bind(R.id.btn_logout) Button _logoutButton;
+    @Bind(R.id.button_profile) Button _profileButton;
+    @Bind(R.id.button_source_report_submission) Button _submitReportButton;
+    @Bind(R.id.button_view_reports) Button _viewReportsButton;
+    @Bind(R.id.button_purity_report_submission) Button _submitPurityReportButton;
+    @Bind(R.id.button_view_purity) Button _viewPurityReports;
+    @Bind(R.id.button_view_historical_report) Button _viewHistoryReport;
 
     private final Model model = Model.getInstance();
 

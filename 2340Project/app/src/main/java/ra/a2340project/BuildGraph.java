@@ -26,11 +26,7 @@ import butterknife.ButterKnife;
 public class BuildGraph extends AppCompatActivity {
     private final Model model = Model.getInstance();
 
-    private LatLng location;
-    private int year;
-    private String type;
-
-    private @Bind(R.id.button_graph_back) Button _backButton;
+    @Bind(R.id.button_graph_back) Button _backButton;
 
     private final HashMap<Integer, Month> graphHashMap = new HashMap<>();
 
@@ -51,8 +47,10 @@ public class BuildGraph extends AppCompatActivity {
             }
         });
 
-        location = model.getGraphLocation();
-        year = model.getGraphYear();
+        String type;
+
+        LatLng location = model.getGraphLocation();
+        int year = model.getGraphYear();
         type = model.getGraphType();
 
         for (int i = 1; i < 13; i++) {

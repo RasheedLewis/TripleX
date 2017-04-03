@@ -10,10 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+
 
 /**
  * Created by benhepburn on 3/14/17.
@@ -21,14 +26,12 @@ import butterknife.ButterKnife;
 
 public class SubmitPurityReportActivity extends AppCompatActivity {
 
-    private @Bind(R.id.purity_latitude) EditText _latitude;
-    private @Bind(R.id.purity_longitude) EditText _longitude;
-    private @Bind(R.id.purity_virusPPM) EditText _virusPPM;
-    private @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
-    private @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
-    private @Bind(R.id.button_submit_purity_report) Button _submitButton;
-
-    private PurityReport report;
+    @Bind(R.id.purity_latitude) EditText _latitude;
+    @Bind(R.id.purity_longitude) EditText _longitude;
+    @Bind(R.id.purity_virusPPM) EditText _virusPPM;
+    @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
+    @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
+    @Bind(R.id.button_submit_purity_report) Button _submitButton;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -56,21 +59,18 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
 
     private void submit() {
         Model model = Model.getInstance();
+
+        DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss");
         Date date = new Date();
+
+        String d = dateFormat.format(date);
+
+
+        PurityReport report;
 
         report = new PurityReport(model.getPurityReportNum());
         model.setPurityReportNum(model.getPurityReportNum() + 1);
 
-        int month = date.getMonth() + 1;
-        int day = date.getDate();
-        int year = date.getYear() + 1900;
-
-        int hours = date.getHours();
-        int minutes = date.getMinutes();
-        int seconds = date.getSeconds();
-
-        String currentDate = Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
-        String currentTime = Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Integer.toString(seconds);
 
         double lat = Double.parseDouble(_latitude.getText().toString());
         double longitude = Double.parseDouble(_longitude.getText().toString());
@@ -82,8 +82,8 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         report.setLong(longitude);
         report.setVirusPPM(virusPPM);
         report.setContaminantPPM(contaminantPPM);
-        report.setTime(currentTime);
-        report.setDate(currentDate);
+        report.setTime(d.substring(9));
+        report.setDate(d.substring(0,9));
         report.setCondition((String) _conditionSpinner.getSelectedItem());
 
         model.addPurityReport(report.getReportNum(),report);

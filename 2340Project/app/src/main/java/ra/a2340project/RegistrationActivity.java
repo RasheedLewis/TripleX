@@ -25,16 +25,14 @@ import butterknife.ButterKnife;
 public class RegistrationActivity extends AppCompatActivity{
     private static final String TAG = "RegistrationActivity";
 
-    private @Bind(R.id.name) EditText _accountNameText;
-    private @Bind(R.id.email) EditText _accountEmailText;
-    private @Bind(R.id.username) EditText _accountUsernameText;
-    private @Bind(R.id.password) EditText _accountPasswordText;
-    private @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
-    private @Bind(R.id.status_spinner) Spinner _statusSpinner;
-    private @Bind(R.id.button_register) Button _registerButton;
+    @Bind(R.id.name) EditText _accountNameText;
+    @Bind(R.id.email) EditText _accountEmailText;
+    @Bind(R.id.username) EditText _accountUsernameText;
+    @Bind(R.id.password) EditText _accountPasswordText;
+    @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
+    @Bind(R.id.status_spinner) Spinner _statusSpinner;
+    @Bind(R.id.button_register) Button _registerButton;
 
-
-    private User _user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +71,7 @@ public class RegistrationActivity extends AppCompatActivity{
             return;
         }
 
+        User _user;
         String username = _accountUsernameText.getText().toString();
         _user = new User(username);
         _user.setName(_accountNameText.getText().toString());

@@ -16,15 +16,16 @@ import butterknife.ButterKnife;
 
 public class ViewPurityReportActivity extends AppCompatActivity {
 
-    private @Bind(R.id.purity_report_view_BackButton) Button _backButton;
+    @Bind(R.id.purity_report_view_BackButton) Button _backButton;
 
-    private PurityReport report;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purity_report_view);
         ButterKnife.bind(this);
+
+        PurityReport report;
 
         Model model = Model.getInstance();
         report = model.get_currentPurityReport();

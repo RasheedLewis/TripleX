@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.Bind;
@@ -23,13 +25,11 @@ import butterknife.ButterKnife;
 public class SubmitSourceReportActivity extends AppCompatActivity {
     private static final String TAG = "SubmitSourceReportActivity";
 
-    private @Bind(R.id.source_latitude) EditText _latitude;
-    private @Bind(R.id.source_longitude) EditText _longitude;
-    private @Bind(R.id.type_spinner) Spinner _typeSpinner;
-    private @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
-    private @Bind(R.id.button_submit_source_report) Button _submitButton;
-
-    private SourceReport report;
+    @Bind(R.id.source_latitude) EditText _latitude;
+    @Bind(R.id.source_longitude) EditText _longitude;
+    @Bind(R.id.type_spinner) Spinner _typeSpinner;
+    @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
+    @Bind(R.id.button_submit_source_report) Button _submitButton;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -62,21 +62,15 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
 
     private void submit() {
         Model model = Model.getInstance();
+        DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss");
         Date date = new Date();
+
+        String d = dateFormat.format(date);
+
+        SourceReport report;
 
         report = new SourceReport(model.getReportNum());
         model.setReportNum(model.getReportNum() + 1);
-
-        int month = date.getMonth() + 1;
-        int day = date.getDate();
-        int year = date.getYear() + 1900;
-
-        int hours = date.getHours();
-        int minutes = date.getMinutes();
-        int seconds = date.getSeconds();
-
-        String currentDate = Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
-        String currentTime = Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Integer.toString(seconds);
 
         double lat = Double.parseDouble(_latitude.getText().toString());
         double longitude = Double.parseDouble(_longitude.getText().toString());
@@ -85,8 +79,8 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         report.setName(model.getCurrentUser().getName());
         report.setLat(lat);
         report.setLong(longitude);
-        report.setDate(currentDate);
-        report.setTime(currentTime);
+        report.setDate(d.substring(0,9));
+        report.setTime(d.substring(9));
         report.setType((String) _typeSpinner.getSelectedItem());
         report.setCondition((String) _conditionSpinner.getSelectedItem());
 
