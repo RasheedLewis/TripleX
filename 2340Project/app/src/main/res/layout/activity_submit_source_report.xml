@@ -9,7 +9,8 @@
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context="ra.a2340project.SubmitSourceReportActivity">
 
     <TextView
         android:text="@string/Submit_Water_Source"

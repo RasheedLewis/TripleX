@@ -3,20 +3,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:weightSum="1">
+    android:gravity="center_horizontal">
 
     <TextView
-        android:text="@string/Purity_Historical_Report"
+        android:text="Purity Historical Report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
         android:layout_gravity="center"
         android:id="@+id/textView"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textAlignment="center" />
+
+    <!--Graph -->
     <com.jjoe64.graphview.GraphView
-        android:layout_width="326dp"
-        android:layout_height="200dip"
-        android:id="@+id/graph"
-        android:layout_weight="0.31" />
+        android:layout_width="match_parent"
+        android:layout_height="300dip"
+        android:id="@+id/graph" />
+
+    <!-- Back Button -->
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/button_graph_back"
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"
+        android:gravity="center"
+        android:text="Back"/>
 </LinearLayout>

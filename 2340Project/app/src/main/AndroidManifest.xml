@@ -55,6 +55,10 @@
         <activity android:name=".ViewPurityReportActivity"></activity>
 
         <activity android:name=".ViewPurityReports"></activity>
+
+        <activity android:name=".GraphInputActivity"></activity>
+
+        <activity android:name=".BuildGraph"></activity>
     </application>
 
 </manifest>

@@ -2,6 +2,8 @@ package ra.a2340project;
 
 import android.content.Intent;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.HashMap;
 
 /**
@@ -37,6 +39,11 @@ public class Model {
     public int reportNum;
     public int purityReportNum;
 
+    /** the input conditions for the historical graph */
+    public LatLng graphLocation;
+    public int graphYear;
+    public String graphType;
+
     /*******
      * Getters and Setters
      */
@@ -64,6 +71,15 @@ public class Model {
     public HashMap<Integer,SourceReport> getSourceReportHashMap() {return _sourceReportHashMap;}
 
     public HashMap<Integer, PurityReport> getPurityReportHashMap() {return _purityReportHashMap;}
+
+    public void setGraphLocation(double lat, double lng) { graphLocation = new LatLng(lat,lng); }
+    public LatLng getGraphLocation() {return graphLocation;}
+
+    public void setGraphYear(int year) { graphYear = year; }
+    public int getGraphYear() {return graphYear; }
+
+    public void setGraphType(String type) { graphType = type; }
+    public String getGraphType() {return graphType; }
 
 
     /*

@@ -91,9 +91,7 @@ public class SourceReport implements Parcelable {
 
     public static final Parcelable.Creator<SourceReport> CREATOR
             = new Parcelable.Creator<SourceReport>() {
-        public SourceReport createFromParcel(Parcel in) {
-            return new SourceReport(in);
-        }
+        public SourceReport createFromParcel(Parcel in) { return new SourceReport(in); }
 
         public SourceReport[] newArray(int size) {
             return new SourceReport[size];
