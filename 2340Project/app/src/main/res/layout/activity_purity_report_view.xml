@@ -13,7 +13,7 @@
 
     <!-- Title -->
     <TextView
-        android:text="Purity Soruce Report"
+        android:text="@string/Purity_Report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_name_label"
-                android:text="Name"
+                android:text="@string/Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_location_label"
-                android:text="Location"
+                android:text="@string/Location"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_reportNum_label"
-                android:text="Report Number"
+                android:text="@string/Report_Num"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_virusPPM_label"
-                android:text="Virus PPM"
+                android:text="@string/VirusPPM"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -119,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_contaminantPPM_label"
-                android:text="Contaminant PPM"
+                android:text="@string/ContaminantPPM"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -137,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_condition_label"
-                android:text="Condition"
+                android:text="@string/Condition"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -155,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_date_label"
-                android:text="Date"
+                android:text="@string/Date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -173,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_report_view_time_label"
-                android:text="Time"
+                android:text="@string/Time"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -195,7 +195,7 @@
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
                 android:gravity="center"
-                android:text="Back"/>
+                android:text="@string/Back"/>
 
         </LinearLayout>
     </ScrollView>

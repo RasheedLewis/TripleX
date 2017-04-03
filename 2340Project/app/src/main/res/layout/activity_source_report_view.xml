@@ -14,7 +14,7 @@
 
     <!-- Title -->
     <TextView
-        android:text="Water Soruce Report"
+        android:text="@string/Water_Source_Report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,8 +38,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/soure_report_view_name_label"
-                android:text="Name"
+                android:id="@+id/source_report_view_name_label"
+                android:text="@string/Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/source_report_view_location_label"
-                android:text="Location"
+                android:text="@string/Location"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/source_report_view_reportNum_label"
-                android:text="Report Number"
+                android:text="@string/Report_Num"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -102,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/source_report_view_type_label"
-                android:text="Type"
+                android:text="@string/Type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/source_report_view_condition_label"
-                android:text="Condition"
+                android:text="@string/Condition"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -138,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/source_report_view_date_label"
-                android:text="Date"
+                android:text="@string/Date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -156,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/source_report_view_time_label"
-                android:text="Time"
+                android:text="@string/Time"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:paddingBottom="20dp" />
 
@@ -178,7 +178,7 @@
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
                 android:gravity="center"
-                android:text="Back"/>
+                android:text="@string/Back"/>
 
         </LinearLayout>
     </ScrollView>

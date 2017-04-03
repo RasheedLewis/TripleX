@@ -13,7 +13,7 @@
     tools:context="ra.a2340project.RegistrationActivity">
 
     <TextView
-        android:text="Submit Water Purity Report"
+        android:text="@string/Submit_Water_Purity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,7 +38,7 @@
                 android:id="@+id/purity_location_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Location"
+                android:text="@string/Location"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <!-- Latitude Input -->
@@ -52,7 +52,7 @@
                     android:id="@+id/purity_latitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Latitude "
+                    android:hint="@string/Enter_Latitude"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
@@ -68,7 +68,7 @@
                     android:id="@+id/purity_longitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Longitude"
+                    android:hint="@string/Enter_Longitude"
                     android:inputType="text"
                     android:maxLines="1" />
 
@@ -79,7 +79,7 @@
                 android:id="@+id/purity_virusPPM_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="VirusPPM"
+                android:text="@string/VirusPPM"
                 android:layout_marginTop="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -94,7 +94,7 @@
                     android:id="@+id/purity_virusPPM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Virus PPM "
+                    android:hint="@string/EnterVirusPPM"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
@@ -104,7 +104,7 @@
                 android:id="@+id/purity_contaminantPPM_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Contaminant PPM"
+                android:text="@string/ContaminantPPM"
                 android:layout_marginTop="20dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -119,7 +119,7 @@
                     android:id="@+id/purity_contaminantPPM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Contaminant PPM "
+                    android:hint="@string/EnterContPPM"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
@@ -131,7 +131,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Condition of Water"
+                android:text="@string/Cond_Water"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <!-- Condition Spinner -->
@@ -151,7 +151,7 @@
                 android:layout_marginBottom="24dp"
                 android:padding="12dp"
                 android:gravity="center"
-                android:text="Submit"/>
+                android:text="@string/Submit"/>
 
         </LinearLayout>
 
