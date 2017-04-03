@@ -52,7 +52,7 @@
                     android:id="@+id/graph_input_latitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/Enter_Latitute"
+                    android:hint="@string/Enter_Latitude"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
