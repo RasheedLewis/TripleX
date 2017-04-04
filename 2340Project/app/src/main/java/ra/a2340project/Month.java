@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * Object class used in the graphing implementation.
+ *
  * Created by Ben Hepburn on 4/2/17.
  */
 

@@ -12,12 +12,15 @@ import android.widget.Spinner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 
 
 
 /**
+ * Screen that allows the current user to submit a purity report
+ *
  * Created by benhepburn on 3/14/17.
  */
 
@@ -65,7 +68,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
     private void submit() {
         Model model = Model.getInstance();
 
-        DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss");
+        DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss", Locale.US);
         Date date = new Date();
 
         String d = dateFormat.format(date);

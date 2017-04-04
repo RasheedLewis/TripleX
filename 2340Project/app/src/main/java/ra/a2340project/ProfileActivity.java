@@ -10,6 +10,8 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 
 /**
+ * The screen that shows the current user's information.
+ *
  * Created by Ben Hepburn on 2/22/17.
  */
 

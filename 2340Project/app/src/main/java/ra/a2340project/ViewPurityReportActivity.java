@@ -10,6 +10,8 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to view a list of all the purity reports
+ *
  * Created by benhepburn on 3/17/17.
  */
 

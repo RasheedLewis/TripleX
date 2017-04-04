@@ -10,10 +10,11 @@ import android.widget.Spinner;
 import android.os.Bundle;
 import android.content.Intent;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows current user to edit their profile information
+ *
  * Created by benhepburn on 2/27/17.
  */
 

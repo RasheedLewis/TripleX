@@ -10,6 +10,8 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to view a list of the source reports
+ *
  * Created by benhepburn on 2/22/17.
  */
 

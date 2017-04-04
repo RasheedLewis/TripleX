@@ -16,6 +16,8 @@ import java.util.List;
 import butterknife.ButterKnife;
 
 /**
+ * Activity that provides inputs for the Historical Report Graph
+ *
  * Created by Ben Hepburn on 4/2/17.
  */
 
@@ -25,7 +27,6 @@ public class GraphInputActivity extends AppCompatActivity{
     private EditText _longitude;
     private EditText _year;
     private Spinner _spinner;
-    private Button _graphButton;
 
     private final static List<String> choices = Arrays.asList("Virus","Contaminant");
 
@@ -39,7 +40,8 @@ public class GraphInputActivity extends AppCompatActivity{
         _longitude = (EditText) findViewById(R.id.graph_input_longitude);
         _year = (EditText) findViewById(R.id.graph_input_year);
         _spinner = (Spinner) findViewById(R.id.graph_input_spinner);
-        _graphButton = (Button) findViewById(R.id.graph_input_button);
+
+        Button _graphButton = (Button) findViewById(R.id.graph_input_button);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, choices);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

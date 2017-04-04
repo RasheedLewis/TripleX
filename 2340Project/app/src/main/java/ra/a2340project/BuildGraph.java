@@ -1,6 +1,8 @@
 package ra.a2340project;
 
 /**
+ * Activity that builds the Historical Report graph.
+ *
  * Created by z_JamesBailey on 4/2/17.
  */
 

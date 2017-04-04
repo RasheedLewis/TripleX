@@ -15,6 +15,8 @@ import android.content.Intent;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to register
+ *
  * Created by Ben Hepburn on 2/21/17.
  */
 

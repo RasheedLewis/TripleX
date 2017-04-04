@@ -23,6 +23,8 @@ import java.util.Collection;
 import butterknife.ButterKnife;
 
 /**
+ * The main screen for the app, showing all options possible in app.
+ *
  * Created by Rasheed on 2/15/2017.
  */
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback,

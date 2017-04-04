@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Object class that holds all information for a purity report
+ *
  * Created by benhepburn on 3/14/17.
  */
 

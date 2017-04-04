@@ -5,6 +5,8 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.HashMap;
 
 /**
+ * The app model, where information is stored and accessed.
+ *
  * Created by Ben Hepburn on 2/23/17.
  */
 

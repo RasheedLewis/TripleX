@@ -36,29 +36,53 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
 
-        <activity android:name=".RegistrationActivity"></activity>
+        </activity>
 
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".RegistrationActivity">
 
-        <activity android:name=".ProfileEditActivity"></activity>
+        </activity>
 
-        <activity android:name=".SubmitSourceReportActivity"></activity>
+        <activity android:name=".ProfileActivity">
 
-        <activity android:name=".ViewSourceReports"></activity>
+        </activity>
 
-        <activity android:name=".ViewSourceReportActivity"></activity>
+        <activity android:name=".ProfileEditActivity">
 
-        <activity android:name=".SubmitPurityReportActivity"></activity>
+        </activity>
 
-        <activity android:name=".ViewPurityReportActivity"></activity>
+        <activity android:name=".SubmitSourceReportActivity">
 
-        <activity android:name=".ViewPurityReports"></activity>
+        </activity>
 
-        <activity android:name=".GraphInputActivity"></activity>
+        <activity android:name=".ViewSourceReports">
 
-        <activity android:name=".BuildGraph"></activity>
+        </activity>
+
+        <activity android:name=".ViewSourceReportActivity">
+
+        </activity>
+
+        <activity android:name=".SubmitPurityReportActivity">
+
+        </activity>
+
+        <activity android:name=".ViewPurityReportActivity">
+
+        </activity>
+
+        <activity android:name=".ViewPurityReports">
+
+        </activity>
+
+        <activity android:name=".GraphInputActivity">
+
+        </activity>
+
+        <activity android:name=".BuildGraph">
+
+        </activity>
     </application>
 
 </manifest>
