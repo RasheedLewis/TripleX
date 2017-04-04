@@ -2,6 +2,12 @@ package ra.a2340project;
 
 import android.content.Intent;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
 
 /**
@@ -16,7 +22,7 @@ public class Model {
     }
 
     /** HashMap containing all the users */
-    private HashMap<String, User> _userHashMap;
+    private final HashMap<String, User> _userHashMap;
 
     /** HashMap containing all the water source reports */
     private HashMap<Integer, SourceReport> _sourceReportHashMap;
@@ -36,6 +42,13 @@ public class Model {
     /** incremented number assigned to new reports  */
     public int reportNum;
     public int purityReportNum;
+
+    private boolean result;
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference mSourceReports = database.getReference("source reports");
+    private DatabaseReference mPurityReports = database.getReference("purity reports");
+    private DatabaseReference mUserRef = database.getReference("users");
 
     /*******
      * Getters and Setters
@@ -73,6 +86,48 @@ public class Model {
         _userHashMap = new HashMap<>();
         _sourceReportHashMap = new HashMap<>();
         _purityReportHashMap = new HashMap<>();
+
+        mUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    String username = (String) snapshot.child("_username").getValue();
+                    User user = snapshot.getValue(User.class);
+                    _userHashMap.put(username, user);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
+
+        mSourceReports.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
+                    SourceReport report = snapshot.getValue(SourceReport.class);
+                    _sourceReportHashMap.put(reportNum, report);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
+
+        mPurityReports.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
+                    PurityReport report = snapshot.getValue(PurityReport.class);
+                    _purityReportHashMap.put(reportNum, report);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
     }
 
     /**
@@ -84,13 +139,27 @@ public class Model {
      * @return true if the username didn't already exist in the hashmap and the key, value pair is added
      *         false if the username is already in the hashmap and the user isn't added
      */
-    public boolean addUser(String username, User user) {
-        if (!_userHashMap.containsKey(username)) {
-            _userHashMap.put(username,user);
-            return true;
-        } else {
-            return false;
-        }
+    public boolean addUser(final String username, final User user) {
+
+        mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.child(username).exists()) {
+                    // run some code
+                    result = false;
+                    return;
+                } else {
+                    mUserRef.child(username).setValue(user);
+                    result = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return result;
     }
 
     /**
@@ -103,13 +172,28 @@ public class Model {
      * @return true if the reportNumber didn't already exist in the HashMap and report is added,
      *         false otherwise.
      */
-    public boolean addSourceReport(int reportNum, SourceReport report) {
-        if (!_sourceReportHashMap.containsKey(reportNum)) {
-            _sourceReportHashMap.put(reportNum, report);
-            return true;
-        } else {
-            return false;
-        }
+    public boolean addSourceReport(final int reportNum, final SourceReport report) {
+
+
+        mSourceReports.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.child(Integer.toString(reportNum)).exists()) {
+                    // run some code
+                    result = false;
+                    return;
+                } else {
+                    mSourceReports.child(Integer.toString(reportNum)).setValue(report);
+                    result = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return result;
     }
 
     /**
@@ -122,13 +206,27 @@ public class Model {
      * @return true if the reportNumber didn't already exist in the HashMap and report is added,
      *         false otherwise.
      */
-    public boolean addPurityReport(int purityReportNum, PurityReport report) {
-        if (!_purityReportHashMap.containsKey(purityReportNum)) {
-            _purityReportHashMap.put(purityReportNum, report);
-            return true;
-        } else {
-            return false;
-        }
+    public boolean addPurityReport(final int purityReportNum, final PurityReport report) {
+
+        mPurityReports.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.child(Integer.toString(purityReportNum)).exists()) {
+                    // run some code
+                    result = false;
+                    return;
+                } else {
+                    mPurityReports.child(Integer.toString(purityReportNum)).setValue(report);
+                    result = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return result;
     }
 
     public void replaceUserData(User user) {

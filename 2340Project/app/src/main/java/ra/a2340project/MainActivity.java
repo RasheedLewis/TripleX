@@ -32,6 +32,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.firebase.auth.FirebaseAuth;
+
 import android.support.v4.app.FragmentActivity;
 
 import java.io.IOException;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private boolean mResolvingError = false;
 
     private GoogleApiClient mGoogleApiClient;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

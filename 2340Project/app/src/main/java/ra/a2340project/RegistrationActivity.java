@@ -1,5 +1,6 @@
 package ra.a2340project;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 
@@ -11,6 +12,14 @@ import android.widget.Button;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,6 +44,9 @@ public class RegistrationActivity extends AppCompatActivity{
 
 
     private User _user;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private Model _model;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +71,7 @@ public class RegistrationActivity extends AppCompatActivity{
 
             }
         });
+        mAuth = FirebaseAuth.getInstance();
     }
 
     /**
@@ -67,7 +80,7 @@ public class RegistrationActivity extends AppCompatActivity{
      */
     public void register() {
         Log.d(TAG, "Register");
-        Model model = Model.getInstance();
+        _model = Model.getInstance();
         if (!validate()) {
             onRegisterFailed();
             return;
@@ -81,8 +94,31 @@ public class RegistrationActivity extends AppCompatActivity{
         _user.setUsername(_accountUsernameText.getText().toString());
         _user.setStatus((String) _statusSpinner.getSelectedItem());
 
-        model.addUser(_user.getUsername(),_user);
-        model.setCurrentUser(_user);
+        _model.addUser(_user.getUsername(),_user);
+        _model.setCurrentUser(_user);
+
+        // [START create_user_with_email]
+        mAuth.createUserWithEmailAndPassword(_accountUsernameText.getText().toString() + "@waterworks.com",
+                _accountPasswordText.getText().toString())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(RegistrationActivity.this, R.string.error_field_required,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // [START_EXCLUDE]
+                        //hideProgressDialog();
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END create_user_with_email]
 
         _registerButton.setEnabled(false);
     }
@@ -157,5 +193,4 @@ public class RegistrationActivity extends AppCompatActivity{
 
         return valid;
     }
-
 }

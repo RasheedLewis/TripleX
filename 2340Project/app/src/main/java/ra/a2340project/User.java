@@ -3,8 +3,12 @@ package ra.a2340project;
 import android.os.Parcelable;
 import android.os.Parcel;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by benhepburn on 2/22/17.
@@ -28,6 +32,8 @@ public class User implements Parcelable {
     public User(String _username) {
         this._username = _username;
     }
+
+    public User(){}
 
     /* **************
      * Getters and Seters
@@ -86,4 +92,15 @@ public class User implements Parcelable {
         }
     };
 
+    @Exclude
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name", _name);
+        map.put("username", _username);
+        map.put("email", _email);
+        map.put("password", _password);
+        map.put("status", _status);
+
+        return map;
+    }
 }
