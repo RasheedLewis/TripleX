@@ -3,7 +3,6 @@ package ra.a2340project;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Arrays;
 import java.util.List;

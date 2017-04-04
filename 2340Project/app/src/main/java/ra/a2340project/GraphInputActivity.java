@@ -13,20 +13,19 @@ import android.view.View;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by benhepburn on 4/2/17.
+ * Created by Ben Hepburn on 4/2/17.
  */
 
 public class GraphInputActivity extends AppCompatActivity{
 
-    @Bind(R.id.graph_input_latitude) EditText _latitude;
-    @Bind(R.id.graph_input_longitude) EditText _longitude;
-    @Bind(R.id.graph_input_year) EditText _year;
-    @Bind(R.id.graph_input_spinner) Spinner _spinner;
-    @Bind(R.id.graph_input_button) Button _graphButton;
+    private EditText _latitude;
+    private EditText _longitude;
+    private EditText _year;
+    private Spinner _spinner;
+    private Button _graphButton;
 
     private final static List<String> choices = Arrays.asList("Virus","Contaminant");
 
@@ -35,6 +34,12 @@ public class GraphInputActivity extends AppCompatActivity{
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_graph_inputs);
         ButterKnife.bind(this);
+
+        _latitude = (EditText) findViewById(R.id.graph_input_latitude);
+        _longitude = (EditText) findViewById(R.id.graph_input_longitude);
+        _year = (EditText) findViewById(R.id.graph_input_year);
+        _spinner = (Spinner) findViewById(R.id.graph_input_spinner);
+        _graphButton = (Button) findViewById(R.id.graph_input_button);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, choices);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

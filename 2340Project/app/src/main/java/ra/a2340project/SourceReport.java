@@ -5,7 +5,6 @@ import android.os.Parcel;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Date;
 
 /**
  * Created by benhepburn on 3/2/17.

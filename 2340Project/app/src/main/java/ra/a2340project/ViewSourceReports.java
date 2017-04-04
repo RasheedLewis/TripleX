@@ -1,29 +1,17 @@
 package ra.a2340project;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-
-import com.google.android.gms.maps.model.LatLng;
-
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -92,7 +80,6 @@ public class ViewSourceReports extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int key) {
 
-            final Model model = Model.getInstance();
             /*
             This is where we have to bind each data element in the list (given by position parameter)
             to an element in the view (which is one of our two TextView widgets

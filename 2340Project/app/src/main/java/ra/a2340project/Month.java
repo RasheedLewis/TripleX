@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by benhepburn on 4/2/17.
+ * Created by Ben Hepburn on 4/2/17.
  */
 
 public class Month implements Parcelable {

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -16,14 +15,13 @@ import butterknife.ButterKnife;
 
 public class ViewPurityReportActivity extends AppCompatActivity {
 
-    @Bind(R.id.purity_report_view_BackButton) Button _backButton;
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purity_report_view);
         ButterKnife.bind(this);
+
+        Button _backButton = (Button) findViewById(R.id.purity_report_view_BackButton);
 
         PurityReport report;
 

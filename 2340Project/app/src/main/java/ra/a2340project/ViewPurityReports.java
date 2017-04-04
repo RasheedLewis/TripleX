@@ -1,5 +1,5 @@
 package ra.a2340project;
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,22 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 /**
  * Created by z_JamesBailey on 3/26/17.
- * Uses recycler view to run thourgh purity report Hashmap and
+ * Uses recycler view to run through purity report Hashmap and
  * display reports
  */
 
@@ -54,7 +46,7 @@ public class ViewPurityReports extends AppCompatActivity {
     }
 
     /**
-     * This inner class is custom to handle purity reports in recylers.
+     * This inner class is custom to handle purity reports in recyclers.
      * It takes our basic model information and
      * converts Purity Report view.
      *
@@ -91,7 +83,6 @@ public class ViewPurityReports extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int key) {
 
-            final Model model = Model.getInstance();
             /*
             This is where we have to bind each data element in the list (given by position parameter)
             to an element in the view (which is one of our two TextView widgets

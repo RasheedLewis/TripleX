@@ -12,7 +12,6 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -25,20 +24,27 @@ import butterknife.ButterKnife;
 public class RegistrationActivity extends AppCompatActivity{
     private static final String TAG = "RegistrationActivity";
 
-    @Bind(R.id.name) EditText _accountNameText;
-    @Bind(R.id.email) EditText _accountEmailText;
-    @Bind(R.id.username) EditText _accountUsernameText;
-    @Bind(R.id.password) EditText _accountPasswordText;
-    @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
-    @Bind(R.id.status_spinner) Spinner _statusSpinner;
-    @Bind(R.id.button_register) Button _registerButton;
-
+    private EditText _accountNameText;
+    private EditText _accountEmailText;
+    private EditText _accountUsernameText;
+    private EditText _accountPasswordText;
+    private EditText _accountConfirmPassText;
+    private Spinner _statusSpinner;
+    private Button _registerButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+
+        _accountNameText = (EditText) findViewById(R.id.name);
+        _accountEmailText = (EditText) findViewById(R.id.email);
+        _accountUsernameText = (EditText) findViewById(R.id.username);
+        _accountPasswordText = (EditText) findViewById(R.id.password);
+        _accountConfirmPassText = (EditText) findViewById(R.id.confirm_password);
+        _statusSpinner = (Spinner) findViewById(R.id.status_spinner);
+        _registerButton = (Button) findViewById(R.id.button_register);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.statuses);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -99,7 +105,7 @@ public class RegistrationActivity extends AppCompatActivity{
     }
 
     /**
-     * Checks all input informaiton
+     * Checks all input information
      *
      * @return boolean indicating if all information entered is valid
      */
@@ -144,7 +150,7 @@ public class RegistrationActivity extends AppCompatActivity{
             valid = false;
         }
 
-        if (password.equals(confirmPass) == false) {
+        if (!password.equals(confirmPass)) {
             _accountConfirmPassText.setError("Your passwords do not match");
             valid = false;
         }

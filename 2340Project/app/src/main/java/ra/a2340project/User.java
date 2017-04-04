@@ -30,7 +30,7 @@ public class User implements Parcelable {
     }
 
     /* **************
-     * Getters and Seters
+     * Getters and Setters
      */
     public String getName() { return _name; }
     public void setName(String name) { _name = name; }

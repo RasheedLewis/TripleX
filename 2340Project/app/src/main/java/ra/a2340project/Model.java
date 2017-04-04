@@ -1,13 +1,11 @@
 package ra.a2340project;
 
-import android.content.Intent;
-
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
 
 /**
- * Created by benhepburn on 2/23/17.
+ * Created by Ben Hepburn on 2/23/17.
  */
 
 public class Model {
@@ -97,8 +95,6 @@ public class Model {
      *
      * @param username the username of the user being added
      * @param user the user object of the user being added
-     * @return true if the username didn't already exist in the hashmap and the key, value pair is added
-     *         false if the username is already in the hashmap and the user isn't added
      */
     public void addUser(String username, User user) {
         if (!_userHashMap.containsKey(username)) {
@@ -113,8 +109,6 @@ public class Model {
      *
      * @param reportNum the report number of the report being added
      * @param report the report object of the report being added
-     * @return true if the reportNumber didn't already exist in the HashMap and report is added,
-     *         false otherwise.
      */
     public void addSourceReport(int reportNum, SourceReport report) {
         if (!_sourceReportHashMap.containsKey(reportNum)) {
@@ -129,8 +123,6 @@ public class Model {
      *
      * @param purityReportNum the report number of the report being added
      * @param report the report object of the report being added
-     * @return true if the reportNumber didn't already exist in the HashMap and report is added,
-     *         false otherwise.
      */
     public void addPurityReport(int purityReportNum, PurityReport report) {
         if (!_purityReportHashMap.containsKey(purityReportNum)) {

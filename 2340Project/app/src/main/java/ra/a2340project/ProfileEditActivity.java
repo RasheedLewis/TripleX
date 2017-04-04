@@ -20,11 +20,11 @@ import butterknife.ButterKnife;
 public class ProfileEditActivity extends AppCompatActivity {
     private static final String TAG = "ProfileEditActivity";
 
-    @Bind(R.id.profile_edit_name) EditText _profileNameText;
-    @Bind(R.id.profile_edit_email) EditText _profileEmailText;
-    @Bind(R.id.profile_edit_username) EditText _profileUsernameText;
-    @Bind(R.id.status_spinner_profile_edit) Spinner _profileStatusSpinner;
-    @Bind(R.id.button_profile_edit_Done) Button _profileDoneButton;
+    private EditText _profileNameText;
+    private EditText _profileEmailText;
+    private EditText _profileUsernameText;
+    private Spinner _profileStatusSpinner;
+    private Button _profileDoneButton;
 
     private User _user;
 
@@ -33,6 +33,12 @@ public class ProfileEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
         ButterKnife.bind(this);
+
+        _profileDoneButton = (Button) findViewById(R.id.button_profile_edit_Done);
+        _profileStatusSpinner = (Spinner) findViewById(R.id.status_spinner_profile_edit);
+        _profileUsernameText = (EditText) findViewById(R.id.profile_edit_username);
+        _profileEmailText = (EditText) findViewById(R.id.profile_edit_email);
+        _profileNameText = (EditText) findViewById(R.id.profile_edit_name);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.statuses);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -80,7 +86,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         String username = _profileUsernameText.getText().toString();
 
-        if (model.getUserHashMap().containsKey(username) && !(username.equals(model.getUserHashMap().get(_user.getUsername())))) {
+        if (model.getUserHashMap().containsKey(username) && !(username.equals(model.getUserHashMap().get(_user.getUsername()).getUsername()))) {
             _profileUsernameText.setError("Username is already taken");
             valid = false;
         } else {

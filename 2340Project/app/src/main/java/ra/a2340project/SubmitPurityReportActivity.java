@@ -2,7 +2,6 @@ package ra.a2340project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,10 +11,8 @@ import android.widget.Spinner;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
@@ -26,18 +23,26 @@ import butterknife.ButterKnife;
 
 public class SubmitPurityReportActivity extends AppCompatActivity {
 
-    @Bind(R.id.purity_latitude) EditText _latitude;
-    @Bind(R.id.purity_longitude) EditText _longitude;
-    @Bind(R.id.purity_virusPPM) EditText _virusPPM;
-    @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
-    @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_purity_report) Button _submitButton;
+    private EditText _latitude;
+    private EditText _longitude;
+    private EditText _virusPPM;
+    private EditText _contaminantPPM;
+    private Spinner _conditionSpinner;
+    private Button _submitButton;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_submit_purity_report);
         ButterKnife.bind(this);
+
+        _latitude = (EditText) findViewById(R.id.purity_latitude);
+        _longitude = (EditText) findViewById(R.id.purity_longitude);
+        _virusPPM = (EditText) findViewById(R.id.purity_virusPPM);
+        _contaminantPPM = (EditText) findViewById(R.id.purity_contaminantPPM);
+        _conditionSpinner = (Spinner) findViewById(R.id.purity_condition_spinner);
+        _submitButton = (Button) findViewById(R.id.button_submit_purity_report);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, PurityReport.conditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

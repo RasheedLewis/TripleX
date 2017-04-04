@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import javax.xml.transform.Source;
-
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -18,16 +15,13 @@ import butterknife.ButterKnife;
 
 public class ViewSourceReportActivity extends AppCompatActivity {
 
-
-    @Bind(R.id.source_report_view_BackButton) Button _backButton;
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_source_report_view);
         ButterKnife.bind(this);
+
+        Button _backButton = (Button) findViewById(R.id.source_report_view_BackButton);
 
         SourceReport report;
 

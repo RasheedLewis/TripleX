@@ -3,7 +3,6 @@ package ra.a2340project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -25,17 +23,23 @@ import butterknife.ButterKnife;
 public class SubmitSourceReportActivity extends AppCompatActivity {
     private static final String TAG = "SubmitSourceReportActivity";
 
-    @Bind(R.id.source_latitude) EditText _latitude;
-    @Bind(R.id.source_longitude) EditText _longitude;
-    @Bind(R.id.type_spinner) Spinner _typeSpinner;
-    @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_source_report) Button _submitButton;
+    private EditText _latitude;
+    private EditText _longitude;
+    private Spinner _typeSpinner;
+    private Spinner _conditionSpinner;
+    private Button _submitButton;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_submit_source_report);
         ButterKnife.bind(this);
+
+        _latitude = (EditText) findViewById(R.id.source_latitude);
+        _longitude = (EditText) findViewById(R.id.source_longitude);
+        _typeSpinner = (Spinner) findViewById(R.id.type_spinner);
+        _conditionSpinner = (Spinner) findViewById(R.id.condition_spinner);
+        _submitButton = (Button) findViewById(R.id.button_submit_source_report);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, SourceReport.types);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
