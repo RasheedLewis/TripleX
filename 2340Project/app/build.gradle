@@ -21,14 +21,11 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-<<<<<<< HEAD
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:design:25.2.0'
-=======
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:design:25.1.1'
->>>>>>> origin/master
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.android.gms:play-services:9.8.0'
     compile 'com.android.support:support-v4:25.1.1'
