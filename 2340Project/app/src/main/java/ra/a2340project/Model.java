@@ -153,7 +153,6 @@ public class Model {
      * @param username the username of the user being added
      * @param user the user object of the user being added
      */
-<<<<<<< HEAD
     public boolean addUser(final String username, final User user) {
 
         mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -175,12 +174,6 @@ public class Model {
             }
         });
         return result;
-=======
-    public void addUser(String username, User user) {
-        if (!_userHashMap.containsKey(username)) {
-            _userHashMap.put(username, user);
-        }
->>>>>>> origin/master
     }
 
     /**
@@ -191,7 +184,6 @@ public class Model {
      * @param reportNum the report number of the report being added
      * @param report the report object of the report being added
      */
-<<<<<<< HEAD
     public boolean addSourceReport(final int reportNum, final SourceReport report) {
 
 
@@ -214,12 +206,6 @@ public class Model {
             }
         });
         return result;
-=======
-    public void addSourceReport(int reportNum, SourceReport report) {
-        if (!_sourceReportHashMap.containsKey(reportNum)) {
-            _sourceReportHashMap.put(reportNum, report);
-        }
->>>>>>> origin/master
     }
 
     /**
@@ -230,7 +216,6 @@ public class Model {
      * @param purityReportNum the report number of the report being added
      * @param report the report object of the report being added
      */
-<<<<<<< HEAD
     public boolean addPurityReport(final int purityReportNum, final PurityReport report) {
 
         mPurityReports.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -252,12 +237,6 @@ public class Model {
             }
         });
         return result;
-=======
-    public void addPurityReport(int purityReportNum, PurityReport report) {
-        if (!_purityReportHashMap.containsKey(purityReportNum)) {
-            _purityReportHashMap.put(purityReportNum, report);
-        }
->>>>>>> origin/master
     }
 
     public void replaceUserData(User user) {

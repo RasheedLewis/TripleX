@@ -3,11 +3,10 @@ package ra.a2340project;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-<<<<<<< HEAD
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.Exclude;
-=======
->>>>>>> origin/master
+
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-<<<<<<< HEAD
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -57,10 +56,9 @@ public class LoginActivity extends AppCompatActivity {
                 // ...
             }
         };
-=======
+
         _loginButton = (Button) findViewById(R.id.btn_login);
         TextView _sign_upLink = (TextView) findViewById(R.id.link_sign_up);
->>>>>>> origin/master
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -98,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        EditText _usernameText = (EditText) findViewById(R.id.username);
+        EditText _passwordText = (EditText) findViewById(R.id.password);
+
         _loginButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-<<<<<<< HEAD
+
         String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
 
@@ -138,8 +139,7 @@ public class LoginActivity extends AppCompatActivity {
 //                        progressDialog.dismiss();
 //                    }
 //                }, 3000);
-=======
->>>>>>> origin/master
+
         progressDialog.dismiss();
     }
 
