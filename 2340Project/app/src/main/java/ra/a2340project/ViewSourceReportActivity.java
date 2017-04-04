@@ -7,27 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import javax.xml.transform.Source;
-
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to view a list of the source reports
+ *
  * Created by benhepburn on 2/22/17.
  */
 
 public class ViewSourceReportActivity extends AppCompatActivity {
-
-
-    @Bind(R.id.source_report_view_BackButton) Button _backButton;
-
-    private SourceReport report;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_source_report_view);
         ButterKnife.bind(this);
+
+        Button _backButton = (Button) findViewById(R.id.source_report_view_BackButton);
+
+        SourceReport report;
 
         Model model = Model.getInstance();
         report = model.getCurrentSourceReport();

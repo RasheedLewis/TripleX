@@ -2,7 +2,6 @@ package ra.a2340project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,31 +9,43 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
+
+
 /**
+ * Screen that allows the current user to submit a purity report
+ *
  * Created by benhepburn on 3/14/17.
  */
 
 public class SubmitPurityReportActivity extends AppCompatActivity {
 
-    @Bind(R.id.purity_latitude) EditText _latitude;
-    @Bind(R.id.purity_longitude) EditText _longitude;
-    @Bind(R.id.purity_virusPPM) EditText _virusPPM;
-    @Bind(R.id.purity_contaminantPPM) EditText _contaminantPPM;
-    @Bind(R.id.purity_condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_purity_report) Button _submitButton;
-
-    private PurityReport report;
+    private EditText _latitude;
+    private EditText _longitude;
+    private EditText _virusPPM;
+    private EditText _contaminantPPM;
+    private Spinner _conditionSpinner;
+    private Button _submitButton;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_submit_purity_report);
         ButterKnife.bind(this);
+
+        _latitude = (EditText) findViewById(R.id.purity_latitude);
+        _longitude = (EditText) findViewById(R.id.purity_longitude);
+        _virusPPM = (EditText) findViewById(R.id.purity_virusPPM);
+        _contaminantPPM = (EditText) findViewById(R.id.purity_contaminantPPM);
+        _conditionSpinner = (Spinner) findViewById(R.id.purity_condition_spinner);
+        _submitButton = (Button) findViewById(R.id.button_submit_purity_report);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, PurityReport.conditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -54,23 +65,20 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         });
     }
 
-    public void submit() {
+    private void submit() {
         Model model = Model.getInstance();
+
+        DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss", Locale.US);
         Date date = new Date();
+
+        String d = dateFormat.format(date);
+
+
+        PurityReport report;
 
         report = new PurityReport(model.getPurityReportNum());
         model.setPurityReportNum(model.getPurityReportNum() + 1);
 
-        int month = date.getMonth() + 1;
-        int day = date.getDate();
-        int year = date.getYear() + 1900;
-
-        int hours = date.getHours();
-        int minutes = date.getMinutes();
-        int seconds = date.getSeconds();
-
-        String currentDate = Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
-        String currentTime = Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Integer.toString(seconds);
 
         double lat = Double.parseDouble(_latitude.getText().toString());
         double longitude = Double.parseDouble(_longitude.getText().toString());
@@ -82,8 +90,8 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         report.setLong(longitude);
         report.setVirusPPM(virusPPM);
         report.setContaminantPPM(contaminantPPM);
-        report.setTime(currentTime);
-        report.setDate(currentDate);
+        report.setTime(d.substring(9));
+        report.setDate(d.substring(0,9));
         report.setCondition((String) _conditionSpinner.getSelectedItem());
 
         model.addPurityReport(report.getReportNum(),report);

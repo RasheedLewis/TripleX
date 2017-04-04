@@ -12,7 +12,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/purity_Cond"
         android:layout_margin="16dp"

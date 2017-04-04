@@ -8,10 +8,15 @@ import com.google.firebase.database.Exclude;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.Map;
+=======
+>>>>>>> origin/master
 
 /**
+ * Object class that holds all information for a source report
+ *
  * Created by benhepburn on 3/2/17.
  */
 
@@ -26,8 +31,8 @@ public class SourceReport implements Parcelable {
     private String _date;
     private String _time;
 
-    public static List<String> types = Arrays.asList("Bottled","Well","Stream","Lake","Spring","Other");
-    public static List<String> conditions = Arrays.asList("Waste","Treatable-Clear","Treatable-Muddy","Potable");
+    public static final List<String> types = Arrays.asList("Bottled","Well","Stream","Lake","Spring","Other");
+    public static final List<String> conditions = Arrays.asList("Waste","Treatable-Clear","Treatable-Muddy","Potable");
 
     /**
      *
@@ -95,9 +100,7 @@ public class SourceReport implements Parcelable {
 
     public static final Parcelable.Creator<SourceReport> CREATOR
             = new Parcelable.Creator<SourceReport>() {
-        public SourceReport createFromParcel(Parcel in) {
-            return new SourceReport(in);
-        }
+        public SourceReport createFromParcel(Parcel in) { return new SourceReport(in); }
 
         public SourceReport[] newArray(int size) {
             return new SourceReport[size];

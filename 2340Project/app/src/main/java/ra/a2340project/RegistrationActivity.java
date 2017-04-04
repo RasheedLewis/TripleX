@@ -21,10 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to register
+ *
  * Created by Ben Hepburn on 2/21/17.
  */
 
@@ -34,6 +35,7 @@ import butterknife.ButterKnife;
 public class RegistrationActivity extends AppCompatActivity{
     private static final String TAG = "RegistrationActivity";
 
+<<<<<<< HEAD
     @Bind(R.id.name) EditText _accountNameText;
     @Bind(R.id.email) EditText _accountEmailText;
     @Bind(R.id.username) EditText _accountUsernameText;
@@ -47,12 +49,29 @@ public class RegistrationActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Model _model;
+=======
+    private EditText _accountNameText;
+    private EditText _accountEmailText;
+    private EditText _accountUsernameText;
+    private EditText _accountPasswordText;
+    private EditText _accountConfirmPassText;
+    private Spinner _statusSpinner;
+    private Button _registerButton;
+>>>>>>> origin/master
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+
+        _accountNameText = (EditText) findViewById(R.id.name);
+        _accountEmailText = (EditText) findViewById(R.id.email);
+        _accountUsernameText = (EditText) findViewById(R.id.username);
+        _accountPasswordText = (EditText) findViewById(R.id.password);
+        _accountConfirmPassText = (EditText) findViewById(R.id.confirm_password);
+        _statusSpinner = (Spinner) findViewById(R.id.status_spinner);
+        _registerButton = (Button) findViewById(R.id.button_register);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.statuses);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -78,7 +97,7 @@ public class RegistrationActivity extends AppCompatActivity{
      * Saves all entered data when registration button is entered
      * Adds new user to user hash map
      */
-    public void register() {
+    private void register() {
         Log.d(TAG, "Register");
         _model = Model.getInstance();
         if (!validate()) {
@@ -86,6 +105,7 @@ public class RegistrationActivity extends AppCompatActivity{
             return;
         }
 
+        User _user;
         String username = _accountUsernameText.getText().toString();
         _user = new User(username);
         _user.setName(_accountNameText.getText().toString());
@@ -123,7 +143,7 @@ public class RegistrationActivity extends AppCompatActivity{
         _registerButton.setEnabled(false);
     }
 
-    public void onRegisterFailed() {
+    private void onRegisterFailed() {
         _registerButton.setEnabled(true);
     }
 
@@ -136,11 +156,11 @@ public class RegistrationActivity extends AppCompatActivity{
     }
 
     /**
-     * Checks all input informaiton
+     * Checks all input information
      *
      * @return boolean indicating if all information entered is valid
      */
-    public boolean validate() {
+    private boolean validate() {
         Model model = Model.getInstance();
 
         boolean valid = true;
@@ -181,7 +201,7 @@ public class RegistrationActivity extends AppCompatActivity{
             valid = false;
         }
 
-        if (password.equals(confirmPass) == false) {
+        if (!password.equals(confirmPass)) {
             _accountConfirmPassText.setError("Your passwords do not match");
             valid = false;
         }

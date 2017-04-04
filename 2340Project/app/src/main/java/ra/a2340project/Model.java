@@ -1,6 +1,6 @@
 package ra.a2340project;
 
-import android.content.Intent;
+import com.google.android.gms.maps.model.LatLng;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -11,12 +11,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 
 /**
- * Created by benhepburn on 2/23/17.
+ * The app model, where information is stored and accessed.
+ *
+ * Created by Ben Hepburn on 2/23/17.
  */
 
 public class Model {
 
-    public static final Model _instance = new Model();
+    private static final Model _instance = new Model();
     public static Model getInstance() {
         return _instance;
     }
@@ -25,10 +27,10 @@ public class Model {
     private final HashMap<String, User> _userHashMap;
 
     /** HashMap containing all the water source reports */
-    private HashMap<Integer, SourceReport> _sourceReportHashMap;
+    private final HashMap<Integer, SourceReport> _sourceReportHashMap;
 
     /** HashMap containing all the water purity reports */
-    private HashMap<Integer, PurityReport> _purityReportHashMap;
+    private final HashMap<Integer, PurityReport> _purityReportHashMap;
 
     /** the currently selected user */
     private User _currentUser;
@@ -40,8 +42,13 @@ public class Model {
     private PurityReport _currentPurityReport;
 
     /** incremented number assigned to new reports  */
-    public int reportNum;
-    public int purityReportNum;
+    private int reportNum;
+    private int purityReportNum;
+
+    /** the input conditions for the historical graph */
+    private LatLng graphLocation;
+    private int graphYear;
+    private String graphType;
 
     private boolean result;
 
@@ -78,11 +85,20 @@ public class Model {
 
     public HashMap<Integer, PurityReport> getPurityReportHashMap() {return _purityReportHashMap;}
 
+    public void setGraphLocation(double lat, double lng) { graphLocation = new LatLng(lat,lng); }
+    public LatLng getGraphLocation() {return graphLocation;}
+
+    public void setGraphYear(int year) { graphYear = year; }
+    public int getGraphYear() {return graphYear; }
+
+    public void setGraphType(String type) { graphType = type; }
+    public String getGraphType() {return graphType; }
+
 
     /*
      * makes new model
      */
-    public Model() {
+    private Model() {
         _userHashMap = new HashMap<>();
         _sourceReportHashMap = new HashMap<>();
         _purityReportHashMap = new HashMap<>();
@@ -136,9 +152,8 @@ public class Model {
      *
      * @param username the username of the user being added
      * @param user the user object of the user being added
-     * @return true if the username didn't already exist in the hashmap and the key, value pair is added
-     *         false if the username is already in the hashmap and the user isn't added
      */
+<<<<<<< HEAD
     public boolean addUser(final String username, final User user) {
 
         mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -160,6 +175,12 @@ public class Model {
             }
         });
         return result;
+=======
+    public void addUser(String username, User user) {
+        if (!_userHashMap.containsKey(username)) {
+            _userHashMap.put(username, user);
+        }
+>>>>>>> origin/master
     }
 
     /**
@@ -169,9 +190,8 @@ public class Model {
      *
      * @param reportNum the report number of the report being added
      * @param report the report object of the report being added
-     * @return true if the reportNumber didn't already exist in the HashMap and report is added,
-     *         false otherwise.
      */
+<<<<<<< HEAD
     public boolean addSourceReport(final int reportNum, final SourceReport report) {
 
 
@@ -194,6 +214,12 @@ public class Model {
             }
         });
         return result;
+=======
+    public void addSourceReport(int reportNum, SourceReport report) {
+        if (!_sourceReportHashMap.containsKey(reportNum)) {
+            _sourceReportHashMap.put(reportNum, report);
+        }
+>>>>>>> origin/master
     }
 
     /**
@@ -203,9 +229,8 @@ public class Model {
      *
      * @param purityReportNum the report number of the report being added
      * @param report the report object of the report being added
-     * @return true if the reportNumber didn't already exist in the HashMap and report is added,
-     *         false otherwise.
      */
+<<<<<<< HEAD
     public boolean addPurityReport(final int purityReportNum, final PurityReport report) {
 
         mPurityReports.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -227,6 +252,12 @@ public class Model {
             }
         });
         return result;
+=======
+    public void addPurityReport(int purityReportNum, PurityReport report) {
+        if (!_purityReportHashMap.containsKey(purityReportNum)) {
+            _purityReportHashMap.put(purityReportNum, report);
+        }
+>>>>>>> origin/master
     }
 
     public void replaceUserData(User user) {

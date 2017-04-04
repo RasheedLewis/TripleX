@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "652385459530",
+    "firebase_url": "https://project-aac90.firebaseio.com",
+    "project_id": "project-aac90",
+    "storage_bucket": "project-aac90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652385459530:android:9643db2149fe46ad",
+        "android_client_info": {
+          "package_name": "ra.a2340project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652385459530-mu872cgmk0p30ess8m1fd68m8rbqdtvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ra.a2340project",
+            "certificate_hash": "f234249bc8c68cd7ca3e441eb20374a4707a2e1d"
+          }
+        },
+        {
+          "client_id": "652385459530-m3tj6qu2n7pqe0931fc9u8jeulet1uu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_3f8ObqqrFEYw_Gj0Vxh6SZEgMEm1f3Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652385459530-m3tj6qu2n7pqe0931fc9u8jeulet1uu8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,18 +2,64 @@
     <string name="app_name">2340Project</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
     <string name="prompt_username">Username</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_username">This user does not exist</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="google_maps_key">AIzaSyChB3D9vLydfbejJ0afBMdAQk_EZY-bDZk</string>
+
+    <string name="Logo">This is the logo</string>
+    <string name="Registration">Registration</string>
+    <string name="Profile">Profile</string>
+    <string name="Number">Number</string>
+    <string name="Condition">Condition</string>
+    <string name="Location">Location</string>
+    <string name="Name">Name</string>
+    <string name="Year">Year</string>
+    <string name="Date">Date</string>
+    <string name="Done">Done</string>
+    <string name="Time">Time</string>
+    <string name="Type">Type</string>
+    <string name="Back">Back</string>
+    <string name="Register">Register</string>
+    <string name="Login">Login</string>
+    <string name="Logout">Logout</string>
+    <string name="Submit">Submit</string>
+    <string name="Edit">Edit</string>
+    <string name="Status">Status</string>
+    <string name="Password">Password</string>
+    <string name="Username">Username</string>
+    <string name="Enter_Username">Enter Username</string>
+    <string name="Enter_Latitude">Enter Latitude</string>
+    <string name="Enter_Longitude">Enter Longitude</string>
+    <string name="Enter_Name">Enter Name</string>
+    <string name="Enter_Year">Enter Year</string>
+    <string name="Email">Email</string>
+    <string name="Enter_Email">Enter Email</string>
+    <string name="Enter_Pass">Enter Password</string>
+    <string name="Conf_Pass">Confirm Password</string>
+    <string name="No_Account">No account yet? Click to sign up!</string>
+
+
+    <string name="Purity_Historical_Report">Purity Historical Report</string>
+    <string name="Water_Quality_List">Water Quality Reports List</string>
+    <string name="Water_Source_List">Water Source Reports List</string>
+    <string name="Water_Source_Report">Water Source Report</string>
+    <string name="View_Source_Reports">View Source Reports</string>
+    <string name="View_Purity_Reports">View Purity Reports</string>
+    <string name="Submit_Water_Purity">Submit Water Purity Report</string>
+    <string name="Graph_Req">Enter Graph Requirements</string>
+    <string name="Submit_Water_Source">Submit Water Source Report</string>
+    <string name="Purity_Report">Purity Source Report</string>
+    <string name="VirusPPM">Virus PPM</string>
+    <string name="ContaminantPPM">Contaminant PPM</string>
+    <string name="VirusOrCont">Virus or Contaminant PPM?</string>
+    <string name="Type_Water">Type of Water</string>
+    <string name="Report_Num">Report Number</string>
+    <string name="EnterVirusPPM">Enter Virus PPM</string>
+    <string name="EnterContPPM">Enter Contaminant PPM</string>
+    <string name="Cond_Water">Condition of Water</string>
+    <string name="View_Hist">View Historical Report</string>
+    <string name="Graph">Graph</string>
+
+
+
 </resources>

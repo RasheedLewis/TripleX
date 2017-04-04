@@ -3,8 +3,11 @@ package ra.a2340project;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+<<<<<<< HEAD
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.Exclude;
+=======
+>>>>>>> origin/master
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Object class that holds all information for a purity report
+ *
  * Created by benhepburn on 3/14/17.
  */
 
@@ -27,7 +32,7 @@ public class PurityReport implements Parcelable {
     private int _virusPPM;
     private int _contaminantPPM;
 
-    public static List<String> conditions = Arrays.asList("Safe","Treatable","Unsafe");
+    public static final List<String> conditions = Arrays.asList("Safe","Treatable","Unsafe");
 
 
     /**

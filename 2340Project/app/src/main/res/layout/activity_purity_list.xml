@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +10,7 @@
         android:layout_height="match_parent">
         <!-- Purity Reports Title -->
         <TextView
-            android:text="Water Quality Reports List"
+            android:text="@string/Water_Quality_List"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/purity_list_title"
@@ -26,7 +25,7 @@
             android:baselineAligned="false">
             <!-- Purity Reports List Headers -->
             <TextView
-                android:text="Number"
+                android:text="@string/Number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_list_number"
@@ -35,7 +34,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:text="Condition"
+                android:text="@string/Condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_list_cond"
@@ -44,7 +43,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:text="VirusPPM"
+                android:text="@string/VirusPPM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_list_virus"
@@ -53,7 +52,7 @@
                 />
 
             <TextView
-                android:text="ContamPPM"
+                android:text="@string/ContaminantPPM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/purity_list_cont"

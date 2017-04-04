@@ -7,19 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by benhepburn on 2/22/17.
+ * The screen that shows the current user's information.
+ *
+ * Created by Ben Hepburn on 2/22/17.
  */
 
 public class ProfileActivity extends AppCompatActivity {
-    private static final String TAG = "ProfileActivity";
-
-    @Bind(R.id.button_profile_Edit) Button _profileEditButton;
-
-    private User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +23,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
+        Button _profileEditButton = (Button) findViewById(R.id.button_profile_Edit);
+
+        User user;
         Model model = Model.getInstance();
         user = model.getCurrentUser();
 

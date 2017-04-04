@@ -3,7 +3,6 @@ package ra.a2340project;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,31 +10,39 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to import a source report
+ *
  * Created by benhepburn on 3/2/17.
  */
 
 public class SubmitSourceReportActivity extends AppCompatActivity {
     private static final String TAG = "SubmitSourceReportActivity";
 
-    @Bind(R.id.source_latitude) EditText _latitude;
-    @Bind(R.id.source_longitude) EditText _longitude;
-    @Bind(R.id.type_spinner) Spinner _typeSpinner;
-    @Bind(R.id.condition_spinner) Spinner _conditionSpinner;
-    @Bind(R.id.button_submit_source_report) Button _submitButton;
-
-    private SourceReport report;
+    private EditText _latitude;
+    private EditText _longitude;
+    private Spinner _typeSpinner;
+    private Spinner _conditionSpinner;
+    private Button _submitButton;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
         super.onCreate(savedInstanceData);
         setContentView(R.layout.activity_submit_source_report);
         ButterKnife.bind(this);
+
+        _latitude = (EditText) findViewById(R.id.source_latitude);
+        _longitude = (EditText) findViewById(R.id.source_longitude);
+        _typeSpinner = (Spinner) findViewById(R.id.type_spinner);
+        _conditionSpinner = (Spinner) findViewById(R.id.condition_spinner);
+        _submitButton = (Button) findViewById(R.id.button_submit_source_report);
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, SourceReport.types);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -60,23 +67,17 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         });
     }
 
-    public void submit() {
+    private void submit() {
         Model model = Model.getInstance();
+        DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss", Locale.US);
         Date date = new Date();
+
+        String d = dateFormat.format(date);
+
+        SourceReport report;
 
         report = new SourceReport(model.getReportNum());
         model.setReportNum(model.getReportNum() + 1);
-
-        int month = date.getMonth() + 1;
-        int day = date.getDate();
-        int year = date.getYear() + 1900;
-
-        int hours = date.getHours();
-        int minutes = date.getMinutes();
-        int seconds = date.getSeconds();
-
-        String currentDate = Integer.toString(month) + "/" + Integer.toString(day) + "/" + Integer.toString(year);
-        String currentTime = Integer.toString(hours) + ":" + Integer.toString(minutes) + ":" + Integer.toString(seconds);
 
         double lat = Double.parseDouble(_latitude.getText().toString());
         double longitude = Double.parseDouble(_longitude.getText().toString());
@@ -85,8 +86,8 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         report.setName(model.getCurrentUser().getName());
         report.setLat(lat);
         report.setLong(longitude);
-        report.setDate(currentDate);
-        report.setTime(currentTime);
+        report.setDate(d.substring(0,9));
+        report.setTime(d.substring(9));
         report.setType((String) _typeSpinner.getSelectedItem());
         report.setCondition((String) _conditionSpinner.getSelectedItem());
 

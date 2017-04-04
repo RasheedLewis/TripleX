@@ -27,7 +27,7 @@ public class User implements Parcelable {
     private String _password;
     private String _status;
 
-    public static List<String> statuses = Arrays.asList("User", "Worker", "Manager", "Administrator");
+    public static final List<String> statuses = Arrays.asList("User", "Worker", "Manager", "Administrator");
 
     public User(String _username) {
         this._username = _username;
@@ -36,7 +36,7 @@ public class User implements Parcelable {
     public User(){}
 
     /* **************
-     * Getters and Seters
+     * Getters and Setters
      */
     public String getName() { return _name; }
     public void setName(String name) { _name = name; }

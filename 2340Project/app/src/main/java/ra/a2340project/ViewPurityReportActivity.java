@@ -7,24 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
+ * Screen that allows the current user to view a list of all the purity reports
+ *
  * Created by benhepburn on 3/17/17.
  */
 
 public class ViewPurityReportActivity extends AppCompatActivity {
-
-    @Bind(R.id.purity_report_view_BackButton) Button _backButton;
-
-    private PurityReport report;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purity_report_view);
         ButterKnife.bind(this);
+
+        Button _backButton = (Button) findViewById(R.id.purity_report_view_BackButton);
+
+        PurityReport report;
 
         Model model = Model.getInstance();
         report = model.get_currentPurityReport();

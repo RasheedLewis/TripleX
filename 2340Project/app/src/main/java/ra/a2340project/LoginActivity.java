@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.ButterKnife;
-import butterknife.Bind;
 
 
 /**
@@ -28,13 +27,9 @@ import butterknife.Bind;
  */
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
-    private static final int REQUEST_SIGNUP = 0;
+    private static final int REQUEST_SIGN_UP = 0;
 
-
-    @Bind(R.id.username) EditText _usernameText;
-    @Bind(R.id.password) EditText _passwordText;
-    @Bind(R.id.btn_login) Button _loginButton;
-    @Bind(R.id.link_signup) TextView _signupLink;
+    private Button _loginButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -45,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+<<<<<<< HEAD
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -61,6 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                 // ...
             }
         };
+=======
+        _loginButton = (Button) findViewById(R.id.btn_login);
+        TextView _sign_upLink = (TextView) findViewById(R.id.link_sign_up);
+>>>>>>> origin/master
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -77,20 +77,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        _signupLink.setOnClickListener(new View.OnClickListener() {
+        _sign_upLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // Start the Registration activity
                 Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                startActivityForResult(intent, REQUEST_SIGN_UP);
                 finish();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
     }
 
-    public void login() {
+    private void login() {
         Log.d(TAG, "Login");
 
         if (!validate()) {
@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
+<<<<<<< HEAD
         String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
 
@@ -137,17 +138,17 @@ public class LoginActivity extends AppCompatActivity {
 //                        progressDialog.dismiss();
 //                    }
 //                }, 3000);
+=======
+>>>>>>> origin/master
         progressDialog.dismiss();
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_SIGNUP) {
+        if (requestCode == REQUEST_SIGN_UP) {
             if (resultCode == RESULT_OK) {
 
-                // TODO: Implement successful signup logic here
-                // By default we just finish the Activity and log them in automatically
                 this.finish();
             }
         }
@@ -159,21 +160,21 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
-        //_loginButton.setEnabled(true);
-        // finish();
-    }
 
-    public void onLoginFailed() {
+    private void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
 
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = true;
 
         Model model = Model.getInstance();
+
+        EditText _usernameText = (EditText) findViewById(R.id.username);
+        EditText _passwordText = (EditText) findViewById(R.id.password);
+
         String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
 
