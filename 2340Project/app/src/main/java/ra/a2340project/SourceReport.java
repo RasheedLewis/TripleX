@@ -8,11 +8,8 @@ import com.google.firebase.database.Exclude;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Date;
 import java.util.Map;
-=======
->>>>>>> origin/master
 
 /**
  * Object class that holds all information for a source report
