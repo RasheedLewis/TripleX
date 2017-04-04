@@ -78,12 +78,55 @@ public class Model {
     public void setPurityReportNum(int num) {purityReportNum = num;}
 
     public HashMap<String,User> getUserHashMap() {
+        mUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    String username = (String) snapshot.child("_username").getValue();
+                    User user = snapshot.getValue(User.class);
+                    _userHashMap.put(username, user);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
         return _userHashMap;
     }
 
-    public HashMap<Integer,SourceReport> getSourceReportHashMap() {return _sourceReportHashMap;}
+    public HashMap<Integer,SourceReport> getSourceReportHashMap() {
+        mSourceReports.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
+                SourceReport report = snapshot.getValue(SourceReport.class);
+                _sourceReportHashMap.put(reportNum, report);
+            }
+        }
 
-    public HashMap<Integer, PurityReport> getPurityReportHashMap() {return _purityReportHashMap;}
+        @Override
+        public void onCancelled(DatabaseError firebaseError) { }
+        });
+        return _sourceReportHashMap;
+    }
+
+    public HashMap<Integer, PurityReport> getPurityReportHashMap() {
+        mPurityReports.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
+                    PurityReport report = snapshot.getValue(PurityReport.class);
+                    _purityReportHashMap.put(reportNum, report);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
+        return _purityReportHashMap;
+    }
 
     public void setGraphLocation(double lat, double lng) { graphLocation = new LatLng(lat,lng); }
     public LatLng getGraphLocation() {return graphLocation;}
@@ -103,47 +146,11 @@ public class Model {
         _sourceReportHashMap = new HashMap<>();
         _purityReportHashMap = new HashMap<>();
 
-        mUserRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    String username = (String) snapshot.child("_username").getValue();
-                    User user = snapshot.getValue(User.class);
-                    _userHashMap.put(username, user);
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError firebaseError) { }
-        });
 
-        mSourceReports.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
-                    SourceReport report = snapshot.getValue(SourceReport.class);
-                    _sourceReportHashMap.put(reportNum, report);
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError firebaseError) { }
-        });
 
-        mPurityReports.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
-                    PurityReport report = snapshot.getValue(PurityReport.class);
-                    _purityReportHashMap.put(reportNum, report);
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError firebaseError) { }
-        });
     }
 
     /**

@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -35,21 +36,20 @@ import butterknife.ButterKnife;
 public class RegistrationActivity extends AppCompatActivity{
     private static final String TAG = "RegistrationActivity";
 
-<<<<<<< HEAD
-    @Bind(R.id.name) EditText _accountNameText;
-    @Bind(R.id.email) EditText _accountEmailText;
-    @Bind(R.id.username) EditText _accountUsernameText;
-    @Bind(R.id.password) EditText _accountPasswordText;
-    @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
-    @Bind(R.id.status_spinner) Spinner _statusSpinner;
-    @Bind(R.id.button_register) Button _registerButton;
+//    @Bind(R.id.name) EditText _accountNameText;
+//    @Bind(R.id.email) EditText _accountEmailText;
+//    @Bind(R.id.username) EditText _accountUsernameText;
+//    @Bind(R.id.password) EditText _accountPasswordText;
+//    @Bind(R.id.confirm_password) EditText _accountConfirmPassText;
+//    @Bind(R.id.status_spinner) Spinner _statusSpinner;
+//    @Bind(R.id.button_register) Button _registerButton;
 
 
     private User _user;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Model _model;
-=======
+
     private EditText _accountNameText;
     private EditText _accountEmailText;
     private EditText _accountUsernameText;
@@ -57,7 +57,6 @@ public class RegistrationActivity extends AppCompatActivity{
     private EditText _accountConfirmPassText;
     private Spinner _statusSpinner;
     private Button _registerButton;
->>>>>>> origin/master
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,7 +128,7 @@ public class RegistrationActivity extends AppCompatActivity{
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(RegistrationActivity.this, R.string.error_field_required,
+                            Toast.makeText(RegistrationActivity.this, R.string.decline,
                                     Toast.LENGTH_SHORT).show();
                         }
 
