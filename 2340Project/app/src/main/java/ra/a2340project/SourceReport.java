@@ -41,6 +41,8 @@ public class SourceReport implements Parcelable {
         this._reportNum = _reportNum;
     }
 
+    public SourceReport() {}
+
     /* ********
      * Getters and Setters
      */

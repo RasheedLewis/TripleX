@@ -33,17 +33,17 @@ public class Model {
     private final HashMap<Integer, PurityReport> _purityReportHashMap;
 
     /** the currently selected user */
-    private User _currentUser;
+    private static User _currentUser;
 
     /** the currently selected source report */
-    private SourceReport _currentSourceReport;
+    private static SourceReport _currentSourceReport;
 
     /** the currently selected purity report */
-    private PurityReport _currentPurityReport;
+    private static PurityReport _currentPurityReport;
 
     /** incremented number assigned to new reports  */
-    private int reportNum;
-    private int purityReportNum;
+    private static int reportNum;
+    private static int purityReportNum;
 
     /** the input conditions for the historical graph */
     private LatLng graphLocation;
@@ -78,12 +78,59 @@ public class Model {
     public void setPurityReportNum(int num) {purityReportNum = num;}
 
     public HashMap<String,User> getUserHashMap() {
+
+        mUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    String username = (String) snapshot.child("username").getValue();
+                    User user = snapshot.getValue(User.class);
+                    _userHashMap.put(username, user);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
+
         return _userHashMap;
     }
 
-    public HashMap<Integer,SourceReport> getSourceReportHashMap() {return _sourceReportHashMap;}
+    public HashMap<Integer,SourceReport> getSourceReportHashMap() {
 
-    public HashMap<Integer, PurityReport> getPurityReportHashMap() {return _purityReportHashMap;}
+        mSourceReports.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    int reportNum = Integer.parseInt(String.valueOf(snapshot.child("reportNum").getValue()));
+                    SourceReport report = snapshot.getValue(SourceReport.class);
+                    _sourceReportHashMap.put(reportNum, report);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
+        return _sourceReportHashMap;
+    }
+
+    public HashMap<Integer, PurityReport> getPurityReportHashMap() {
+        mPurityReports.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    int reportNum = Integer.parseInt(String.valueOf(snapshot.child("reportNum").getValue()));
+                    PurityReport report = snapshot.getValue(PurityReport.class);
+                    _purityReportHashMap.put(reportNum, report);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) { }
+        });
+
+        return _purityReportHashMap;
+    }
 
     public void setGraphLocation(double lat, double lng) { graphLocation = new LatLng(lat,lng); }
     public LatLng getGraphLocation() {return graphLocation;}
@@ -103,47 +150,6 @@ public class Model {
         _sourceReportHashMap = new HashMap<>();
         _purityReportHashMap = new HashMap<>();
 
-        mUserRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    String username = (String) snapshot.child("_username").getValue();
-                    User user = snapshot.getValue(User.class);
-                    _userHashMap.put(username, user);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError firebaseError) { }
-        });
-
-        mSourceReports.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
-                    SourceReport report = snapshot.getValue(SourceReport.class);
-                    _sourceReportHashMap.put(reportNum, report);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError firebaseError) { }
-        });
-
-        mPurityReports.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    int reportNum = Integer.parseInt((String) snapshot.child("_reportNum").getValue());
-                    PurityReport report = snapshot.getValue(PurityReport.class);
-                    _purityReportHashMap.put(reportNum, report);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError firebaseError) { }
-        });
     }
 
     /**
@@ -155,7 +161,10 @@ public class Model {
      */
     public boolean addUser(final String username, final User user) {
 
+
         mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.child(username).exists()) {
@@ -192,6 +201,7 @@ public class Model {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.child(Integer.toString(reportNum)).exists()) {
                     // run some code
+                    System.out.println("THIS EXISTS");
                     result = false;
                     return;
                 } else {

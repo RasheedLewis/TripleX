@@ -10,10 +10,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 
@@ -31,6 +35,10 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
     private Spinner _typeSpinner;
     private Spinner _conditionSpinner;
     private Button _submitButton;
+
+    private Map<Integer, SourceReport> map;
+    private SourceReport report;
+    private FirebaseUser fUser;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -68,30 +76,51 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
     }
 
     private void submit() {
-        Model model = Model.getInstance();
+        final Model model = Model.getInstance();
         DateFormat dateFormat =  new SimpleDateFormat("M/dd/yyyy HH:mm:ss", Locale.US);
         Date date = new Date();
 
-        String d = dateFormat.format(date);
+        final String d = dateFormat.format(date);
 
-        SourceReport report;
 
-        report = new SourceReport(model.getReportNum());
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        map = model.getSourceReportHashMap();
+                        report = new SourceReport(map.size());
+                    }
+                }, 3000);
+
+
         model.setReportNum(model.getReportNum() + 1);
 
-        double lat = Double.parseDouble(_latitude.getText().toString());
-        double longitude = Double.parseDouble(_longitude.getText().toString());
+        final double lat = Double.parseDouble(_latitude.getText().toString());
+        final double longitude = Double.parseDouble(_longitude.getText().toString());
 
 
-        report.setName(model.getCurrentUser().getName());
-        report.setLat(lat);
-        report.setLong(longitude);
-        report.setDate(d.substring(0,9));
-        report.setTime(d.substring(9));
-        report.setType((String) _typeSpinner.getSelectedItem());
-        report.setCondition((String) _conditionSpinner.getSelectedItem());
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        fUser = FirebaseAuth.getInstance().getCurrentUser();
+                        report.setName(fUser.getEmail().split("@")[0]);
+                        report.setLat(lat);
+                        report.setLong(longitude);
+                        report.setDate(d.substring(0,9));
+                        report.setTime(d.substring(9));
+                        report.setType((String) _typeSpinner.getSelectedItem());
+                        report.setCondition((String) _conditionSpinner.getSelectedItem());
+                    }
+                }, 3000);
 
-        model.addSourceReport(report.getReportNum(),report);
+
+
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        model.addSourceReport(report.getReportNum(),report);
+                    }
+                }, 3000);
         model.setCurrentSourceReport(report);
 
         _submitButton.setEnabled(false);

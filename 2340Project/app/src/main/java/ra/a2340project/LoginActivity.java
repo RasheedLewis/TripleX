@@ -31,16 +31,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button _loginButton;
 
-    private FirebaseAuth mAuth;
+    private boolean result;
+
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Model model = Model.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        System.out.println("ONcreate here");
+        System.out.println(model.getUserHashMap().toString());
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -53,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
 
@@ -64,13 +67,13 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                login();
-
-                if (validate()) {
+                if (login()) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                } else {
+                    _loginButton.setEnabled(true);
                 }
             }
         });
@@ -88,30 +91,28 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void login() {
+    private boolean login() {
         Log.d(TAG, "Login");
 
-        if (!validate()) {
-            onLoginFailed();
-            return;
-        }
-
-        EditText _usernameText = (EditText) findViewById(R.id.username);
-        EditText _passwordText = (EditText) findViewById(R.id.password);
+        final Model model = Model.getInstance();
 
         _loginButton.setEnabled(false);
+
+        System.out.println(model.getUserHashMap().toString());
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
+        progressDialog.dismiss();
 
 
-        String username = _usernameText.getText().toString();
+        EditText _usernameText = (EditText) findViewById(R.id.username);
+        EditText _passwordText = (EditText) findViewById(R.id.password);
+
+        final String username = _usernameText.getText().toString();
         String password = _passwordText.getText().toString();
-
-        // TODO: Implement your own authentication logic here.
 
         mAuth.signInWithEmailAndPassword(username + "@waterworks.com", password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -119,28 +120,28 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
+
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(LoginActivity.this, "Login failed",
                                     Toast.LENGTH_SHORT).show();
+
+                            result = false;
+
+                        } else {
+                            result = true;
                         }
                     }
                 });
 
-//        new android.os.Handler().postDelayed(
-//                new Runnable() {
-//                    public void run() {
-//                        // On complete call either onLoginSuccess or onLoginFailed
-//                        onLoginSuccess();
-//                        // onLoginFailed();
-//                        progressDialog.dismiss();
-//                    }
-//                }, 3000);
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        model.setCurrentUser(model.getUserHashMap().get(username));
+                    }
+                }, 3000);
 
-        progressDialog.dismiss();
+        return result;
     }
 
 
@@ -158,43 +159,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Disable going back to the MainActivity
         moveTaskToBack(true);
-    }
-
-
-    private void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        _loginButton.setEnabled(true);
-    }
-
-    private boolean validate() {
-        boolean valid = true;
-
-        Model model = Model.getInstance();
-
-        EditText _usernameText = (EditText) findViewById(R.id.username);
-        EditText _passwordText = (EditText) findViewById(R.id.password);
-
-        String username = _usernameText.getText().toString();
-        String password = _passwordText.getText().toString();
-
-        if (username.isEmpty() || !(model.getUserHashMap().containsKey(username))) {
-            _usernameText.setError("Enter a valid username");
-            valid = false;
-        } else {
-            _usernameText.setError(null);
-        }
-
-        if(password.isEmpty() ||
-                (model.getUserHashMap().containsKey(username) &&
-                        !(model.getUserHashMap().get(username).getPassword().equals(password)))) {
-            _passwordText.setError("Your password is incorrect.");
-            valid = false;
-        } else {
-            _passwordText.setError(null);
-        }
-
-        return valid;
     }
 
     @Override

@@ -34,6 +34,8 @@ public class PurityReport implements Parcelable {
     public static final List<String> conditions = Arrays.asList("Safe","Treatable","Unsafe");
 
 
+    public PurityReport() { }
+
     /**
      * Constructor for Purity Report
      *

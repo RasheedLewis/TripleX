@@ -26,6 +26,7 @@ import android.support.v4.app.FragmentActivity;
 
 
 import java.util.Collection;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         GoogleMap.OnMarkerClickListener {
 
     private final Model model = Model.getInstance();
-
+    Map<Integer, SourceReport> sourceMap;
+    Map<Integer, PurityReport> purityMap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -133,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onClick(View v) {
+
                 if (!model.getCurrentUser().getStatus().equals("Worker") && !model.getCurrentUser().getStatus().equals("Manager")) {
                     AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                     alertDialog.setTitle("Error");
@@ -183,6 +186,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         googleMap.setOnMarkerClickListener(this);
 
+
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        sourceMap = Model.getInstance().getSourceReportHashMap();
+                    }
+                }, 3000);
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        purityMap = Model.getInstance().getPurityReportHashMap();
+                    }
+                }, 3000);
+
         Collection<SourceReport> reports = model.getSourceReportHashMap().values();
         Collection<PurityReport> purityReports = model.getPurityReportHashMap().values();
 
@@ -190,9 +209,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         for (SourceReport report : reports) {
             LatLng latLong = new LatLng(report.getLat(),report.getLong());
 
-            marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("Marker"));
+            marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("SourceReport"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
-            marker.setTag(report.getReportNum());
+            marker.setTag(report);
         }
 
         for (PurityReport report : purityReports) {
@@ -200,15 +219,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             marker = googleMap.addMarker(new MarkerOptions().position(latLong).title("PurityReport"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
-            marker.setTag(report.getReportNum());
+            marker.setTag(report);
         }
 
     }
 
     @Override
     public boolean onMarkerClick(Marker marker){
-        if (model.getSourceReportHashMap().containsKey(marker.getTag())) {
-            SourceReport report = model.getSourceReportHashMap().get(marker.getTag());
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        sourceMap = Model.getInstance().getSourceReportHashMap();
+                        purityMap = Model.getInstance().getPurityReportHashMap();
+                    }
+                }, 3000);
+
+
+        if (marker.getTag() instanceof SourceReport) {
+            SourceReport report = (SourceReport) marker.getTag();
             model.setCurrentSourceReport(report);
             Intent intent = new Intent(getApplicationContext(), ViewSourceReportActivity.class);
             startActivity(intent);
@@ -216,8 +244,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
-        if (model.getPurityReportHashMap().containsKey(marker.getTag())) {
-            PurityReport report = model.getPurityReportHashMap().get(marker.getTag());
+        if (marker.getTag() instanceof PurityReport) {
+            PurityReport report = (PurityReport) marker.getTag();
             model.set_currentPurityReport(report);
             Intent intent = new Intent(getApplicationContext(), ViewPurityReportActivity.class);
             startActivity(intent);

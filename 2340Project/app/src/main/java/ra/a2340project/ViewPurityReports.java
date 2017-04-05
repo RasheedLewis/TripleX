@@ -40,9 +40,19 @@ public class ViewPurityReports extends AppCompatActivity {
      * Set up an adapter and hook it to the provided view
      * @param recyclerView  the view that needs this adapter
      */
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        Model model = Model.getInstance();
-        recyclerView.setAdapter(new SimpleCourseRecyclerViewAdapter(model.getPurityReportHashMap()));
+    private void setupRecyclerView(@NonNull final RecyclerView recyclerView) {
+        final Model model = Model.getInstance();
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        // On complete call either onLoginSuccess or onLoginFailed
+                        //onLoginSuccess();
+                        // onLoginFailed();
+                        //progressDialog.dismiss();
+                        recyclerView.setAdapter(new SimpleCourseRecyclerViewAdapter(model.getPurityReportHashMap()));
+                    }
+                }, 3000);
+
     }
 
     /**
