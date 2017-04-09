@@ -10,7 +10,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 
 /**
- * Screen that allows the current user to view an indivdual source report.
+ * Screen that allows the current user to view an individual source report.
  *
  * Created by benhepburn on 2/22/17.
  */
@@ -34,13 +34,16 @@ public class ViewSourceReportActivity extends AppCompatActivity {
         nameTextView.setText(report.getName());
 
         TextView latTextView = (TextView) findViewById(R.id.source_report_view_latitude);
-        latTextView.setText("Latitude: " + report.getLat());
+        String lat = Double.toString(report.getLat());
+        latTextView.setText(lat);
 
         TextView longTextView = (TextView) findViewById(R.id.source_report_view_longitude);
-        longTextView.setText("Longitude: " + report.getLong());
+        String lng = Double.toString(report.getLong());
+        longTextView.setText(lng);
 
         TextView numTextView = (TextView) findViewById(R.id.source_report_view_reportNum);
-        numTextView.setText(Integer.toString(report.getReportNum()));
+        String reportNum = Integer.toString(report.getReportNum());
+        numTextView.setText(reportNum);
 
         TextView typeTextView = (TextView) findViewById(R.id.source_report_view_type);
         typeTextView.setText(report.getType());

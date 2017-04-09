@@ -19,6 +19,12 @@ import java.util.HashMap;
 public class Model {
 
     private static final Model _instance = new Model();
+
+    /**
+     * Provides a current instance of the model class
+     *
+     * @return An instance of the model class
+     */
     public static Model getInstance() {
         return _instance;
     }
@@ -43,7 +49,6 @@ public class Model {
 
     /** incremented number assigned to new reports  */
     private static int reportNum;
-    private static int purityReportNum;
 
     /** the input conditions for the historical graph */
     private LatLng graphLocation;
@@ -52,18 +57,16 @@ public class Model {
 
     private boolean result;
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference mSourceReports = database.getReference("source reports");
-    private DatabaseReference mPurityReports = database.getReference("purity reports");
-    private DatabaseReference mUserRef = database.getReference("users");
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference mSourceReports = database.getReference("source reports");
+    private final DatabaseReference mPurityReports = database.getReference("purity reports");
+    private final DatabaseReference mUserRef = database.getReference("users");
 
     /*******
      * Getters and Setters
      */
     public User getCurrentUser() { return _currentUser; }
-    public void setCurrentUser(User user) {
-        _currentUser = user;
-    }
+    public void setCurrentUser(User user) { _currentUser = user; }
 
     public SourceReport getCurrentSourceReport() {return _currentSourceReport;}
     public void setCurrentSourceReport(SourceReport report) {_currentSourceReport = report;}
@@ -73,9 +76,6 @@ public class Model {
 
     public int getReportNum() {return reportNum;}
     public void setReportNum(int num) {reportNum = num;}
-
-    public int getPurityReportNum() {return purityReportNum;}
-    public void setPurityReportNum(int num) {purityReportNum = num;}
 
     public HashMap<String,User> getUserHashMap() {
 
@@ -159,7 +159,7 @@ public class Model {
      * @param username the username of the user being added
      * @param user the user object of the user being added
      */
-    public boolean addUser(final String username, final User user) {
+    public void addUser(final String username, final User user) {
 
 
         mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -170,7 +170,6 @@ public class Model {
                 if (snapshot.child(username).exists()) {
                     // run some code
                     result = false;
-                    return;
                 } else {
                     mUserRef.child(username).setValue(user);
                     result = true;
@@ -182,7 +181,6 @@ public class Model {
 
             }
         });
-        return result;
     }
 
     /**
@@ -193,7 +191,7 @@ public class Model {
      * @param reportNum the report number of the report being added
      * @param report the report object of the report being added
      */
-    public boolean addSourceReport(final int reportNum, final SourceReport report) {
+    public void addSourceReport(final int reportNum, final SourceReport report) {
 
 
         mSourceReports.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -203,7 +201,6 @@ public class Model {
                     // run some code
                     System.out.println("THIS EXISTS");
                     result = false;
-                    return;
                 } else {
                     mSourceReports.child(Integer.toString(reportNum)).setValue(report);
                     result = true;
@@ -215,7 +212,6 @@ public class Model {
 
             }
         });
-        return result;
     }
 
     /**
@@ -226,7 +222,7 @@ public class Model {
      * @param purityReportNum the report number of the report being added
      * @param report the report object of the report being added
      */
-    public boolean addPurityReport(final int purityReportNum, final PurityReport report) {
+    public void addPurityReport(final int purityReportNum, final PurityReport report) {
 
         mPurityReports.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -234,7 +230,6 @@ public class Model {
                 if (snapshot.child(Integer.toString(purityReportNum)).exists()) {
                     // run some code
                     result = false;
-                    return;
                 } else {
                     mPurityReports.child(Integer.toString(purityReportNum)).setValue(report);
                     result = true;
@@ -246,12 +241,5 @@ public class Model {
 
             }
         });
-        return result;
-    }
-
-    public void replaceUserData(User user) {
-        User existing = _currentUser;
-        addUser(user.getUsername(),user);
-        _userHashMap.remove(existing.getUsername());
     }
 }

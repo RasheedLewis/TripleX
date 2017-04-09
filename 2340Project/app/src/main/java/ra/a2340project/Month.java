@@ -14,6 +14,9 @@ public class Month implements Parcelable {
     private int _totalPPM;
     private int _counter;
 
+    /**
+     * A constructor that creates a Month object and sets its default variables
+     */
     public Month() {
         _totalPPM = 0;
         _counter = 0;

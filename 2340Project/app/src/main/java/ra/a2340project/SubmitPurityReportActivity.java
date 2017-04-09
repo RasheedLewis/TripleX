@@ -40,7 +40,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
     private Map<Integer, PurityReport> map;
     private PurityReport report;
 
-    FirebaseUser fUser;
+    private FirebaseUser fUser;
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -56,7 +56,7 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
         _submitButton = (Button) findViewById(R.id.button_submit_purity_report);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, PurityReport.conditions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, PurityReport.conditions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _conditionSpinner.setAdapter(adapter);
 
@@ -101,7 +101,9 @@ public class SubmitPurityReportActivity extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         fUser = FirebaseAuth.getInstance().getCurrentUser();
-                        report.setName(fUser.getEmail().split("@")[0]);
+                        if (fUser != null) {
+                            report.setName(fUser.getEmail().split("@")[0]);
+                        }
                         report.setLat(lat);
                         report.setLong(longitude);
                         report.setVirusPPM(virusPPM);

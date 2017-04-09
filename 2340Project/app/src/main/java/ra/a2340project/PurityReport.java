@@ -3,15 +3,8 @@ package ra.a2340project;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
-import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.database.Exclude;
-
-
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Object class that holds all information for a purity report
@@ -33,7 +26,9 @@ public class PurityReport implements Parcelable {
 
     public static final List<String> conditions = Arrays.asList("Safe","Treatable","Unsafe");
 
-
+    /**
+     * An empty constructor used in implementation
+     */
     public PurityReport() { }
 
     /**
@@ -50,7 +45,6 @@ public class PurityReport implements Parcelable {
     public void setName(String name) {_name = name;}
 
     public int getReportNum() {return _reportNum;}
-    public void setReportNum(int num) {_reportNum = num;}
 
     public double getLat() {return _lat;}
     public void setLat(double lat) {_lat = lat;}
@@ -111,21 +105,4 @@ public class PurityReport implements Parcelable {
         public PurityReport[] newArray(int size) {return new PurityReport[size];
         }
     };
-
-    @Exclude
-    Map<String, Object> toMap() {
-        Map<String, Object> map = new HashMap<String, Object>();
-
-        map.put("name", _name);
-        map.put("reportNum", _reportNum);
-        map.put("lat", _lat);
-        map.put("long", _long);
-        map.put("date", _date);
-        map.put("time", _time);
-        map.put("condition", _condition);
-        map.put("virusPPM", _virusPPM);
-        map.put("contaminantPPM", _contaminantPPM);
-
-        return map;
-    }
 }

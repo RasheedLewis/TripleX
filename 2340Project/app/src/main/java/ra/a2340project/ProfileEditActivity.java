@@ -41,7 +41,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         _profileEmailText = (EditText) findViewById(R.id.profile_edit_email);
         _profileNameText = (EditText) findViewById(R.id.profile_edit_name);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.statuses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, User.statuses);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _profileStatusSpinner.setAdapter(adapter);
 

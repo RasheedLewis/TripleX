@@ -3,13 +3,9 @@ package ra.a2340project;
 import android.os.Parcelable;
 import android.os.Parcel;
 
-import com.google.firebase.database.Exclude;
-
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Date;
-import java.util.Map;
+
 
 /**
  * Object class that holds all information for a source report
@@ -41,6 +37,9 @@ public class SourceReport implements Parcelable {
         this._reportNum = _reportNum;
     }
 
+    /**
+     * An empty constructor used in implementation
+     */
     public SourceReport() {}
 
     /* ********
@@ -62,7 +61,6 @@ public class SourceReport implements Parcelable {
     public void setCondition(String condition) {_condition = condition;}
 
     public int getReportNum() {return _reportNum;}
-    public void setReportNum(int num) {_reportNum = num;}
 
     public String getDate() {return _date;}
     public void setDate(String date) {_date = date;}
@@ -106,18 +104,4 @@ public class SourceReport implements Parcelable {
         }
     };
 
-    @Exclude
-    Map<String, Object> toMap() {
-        Map<String, Object> map = new HashMap<String, Object>();
-
-        map.put("name", _name);
-        map.put("reportNum", _reportNum);
-        map.put("lat", _lat);
-        map.put("long", _long);
-        map.put("date", _date);
-        map.put("time", _time);
-        map.put("condition", _condition);
-
-        return map;
-    }
 }

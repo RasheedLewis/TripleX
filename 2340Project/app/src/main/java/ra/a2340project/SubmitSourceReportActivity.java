@@ -28,7 +28,6 @@ import butterknife.ButterKnife;
  */
 
 public class SubmitSourceReportActivity extends AppCompatActivity {
-    private static final String TAG = "SubmitSourceReportActivity";
 
     private EditText _latitude;
     private EditText _longitude;
@@ -52,11 +51,11 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
         _conditionSpinner = (Spinner) findViewById(R.id.condition_spinner);
         _submitButton = (Button) findViewById(R.id.button_submit_source_report);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, SourceReport.types);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, SourceReport.types);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _typeSpinner.setAdapter(adapter);
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, SourceReport.conditions);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, SourceReport.conditions);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _conditionSpinner.setAdapter(adapter1);
 
@@ -102,7 +101,9 @@ public class SubmitSourceReportActivity extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         fUser = FirebaseAuth.getInstance().getCurrentUser();
-                        report.setName(fUser.getEmail().split("@")[0]);
+                        if (fUser != null) {
+                            report.setName(fUser.getEmail().split("@")[0]);
+                        }
                         report.setLat(lat);
                         report.setLong(longitude);
                         report.setDate(d.substring(0,9));

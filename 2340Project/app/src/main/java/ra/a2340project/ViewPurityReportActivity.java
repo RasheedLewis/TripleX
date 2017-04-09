@@ -34,19 +34,24 @@ public class ViewPurityReportActivity extends AppCompatActivity {
         nameTextView.setText(report.getName());
 
         TextView latTextView = (TextView) findViewById(R.id.purity_report_view_latitude);
-        latTextView.setText("Latitude: " + report.getLat());
+        String lat = Double.toString(report.getLat());
+        latTextView.setText(lat);
 
         TextView longTextView = (TextView) findViewById(R.id.purity_report_view_longitude);
-        longTextView.setText("Longitude: " + report.getLong());
+        String lng = Double.toString(report.getLong());
+        longTextView.setText(lng);
 
         TextView numTextView = (TextView) findViewById(R.id.purity_report_view_reportNum);
-        numTextView.setText(Integer.toString(report.getReportNum()));
+        String reportNum = Integer.toString(report.getReportNum());
+        numTextView.setText(reportNum);
 
         TextView virusPPMTextView = (TextView) findViewById(R.id.purity_report_view_virusPPM);
-        virusPPMTextView.setText(Integer.toString(report.getVirusPPM()));
+        String vPPM = Integer.toString(report.getVirusPPM());
+        virusPPMTextView.setText(vPPM);
 
         TextView contaminantPPMTextView = (TextView) findViewById(R.id.purity_report_view_contaminantPPM);
-        contaminantPPMTextView.setText(Integer.toString(report.getContaminantPPM()));
+        String cPPM = Integer.toString(report.getContaminantPPM());
+        contaminantPPMTextView.setText(cPPM);
 
         TextView conditionTextView = (TextView) findViewById(R.id.purity_report_view_condition);
         conditionTextView.setText(report.getCondition());

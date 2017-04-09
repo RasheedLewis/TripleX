@@ -1,12 +1,5 @@
 package ra.a2340project;
 
-/**
- * Activity that builds the Historical Report graph.
- *
- * Created by z_JamesBailey on 4/2/17.
- */
-
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +17,12 @@ import java.util.Set;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+/**
+ * Activity that builds the Historical Report graph.
+ *
+ * Created by z_JamesBailey on 4/2/17.
+ */
 
 public class BuildGraph extends AppCompatActivity {
     private final Model model = Model.getInstance();

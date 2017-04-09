@@ -12,14 +12,11 @@ import android.widget.Button;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 
 import butterknife.ButterKnife;
 
@@ -36,10 +33,7 @@ public class RegistrationActivity extends AppCompatActivity{
     private static final String TAG = "RegistrationActivity";
 
 
-    private User _user;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private Model _model;
 
     private EditText _accountNameText;
     private EditText _accountEmailText;
@@ -64,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity{
         _statusSpinner = (Spinner) findViewById(R.id.status_spinner);
         _registerButton = (Button) findViewById(R.id.button_register);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.statuses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, User.statuses);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _statusSpinner.setAdapter(adapter);
 
@@ -90,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity{
      */
     private void register() {
         Log.d(TAG, "Register");
-        _model = Model.getInstance();
+        Model _model = Model.getInstance();
         if (!validate()) {
             onRegisterFailed();
             return;

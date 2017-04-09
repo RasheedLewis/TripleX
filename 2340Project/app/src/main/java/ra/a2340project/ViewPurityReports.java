@@ -21,8 +21,6 @@ import butterknife.ButterKnife;
  */
 
 public class ViewPurityReports extends AppCompatActivity {
-    private static final String TAG = "ViewPurityReportActivity";
-
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -103,10 +101,16 @@ public class ViewPurityReports extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            holder.purityID.setText("   " + purityList.get(key).getReportNum());
-            holder.purityCOND.setText("      " + purityList.get(key).getCondition());
-           holder.purityVIRUS.setText("    " + purityList.get(key).getVirusPPM());
-           holder.purityCONT.setText("    " + purityList.get(key).getContaminantPPM());
+
+            String purityIDD = ("   " + purityList.get(key).getReportNum());
+            String purityCond = ("      " + purityList.get(key).getCondition());
+            String purityVirus = ("    " + purityList.get(key).getVirusPPM());
+            String purityCont = ("    " + purityList.get(key).getContaminantPPM());
+
+            holder.purityID.setText(purityIDD);
+            holder.purityCOND.setText(purityCond);
+            holder.purityVIRUS.setText(purityVirus);
+            holder.purityCONT.setText(purityCont);
 
         }
 
@@ -129,6 +133,11 @@ public class ViewPurityReports extends AppCompatActivity {
             public final TextView purityCONT;
             public PurityReport purityList;
 
+            /**
+             * Binds the viewHolder layouts to TextView objects
+             *
+             * @param view The view being used
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

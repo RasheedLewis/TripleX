@@ -43,7 +43,7 @@ public class GraphInputActivity extends AppCompatActivity{
 
         Button _graphButton = (Button) findViewById(R.id.graph_input_button);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, choices);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, choices);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _spinner.setAdapter(adapter);
 

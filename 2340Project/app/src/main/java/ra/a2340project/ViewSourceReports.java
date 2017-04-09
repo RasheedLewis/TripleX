@@ -20,8 +20,6 @@ import butterknife.ButterKnife;
  */
 
 public class ViewSourceReports extends AppCompatActivity {
-    private static final String TAG = "ViewSourceReportActivity";
-
 
     @Override
     public void onCreate(Bundle savedInstanceData) {
@@ -99,10 +97,15 @@ public class ViewSourceReports extends AppCompatActivity {
               Now we bind the data to the widgets.  In this case, pretty simple, put the id in one
               textview and the string rep of a course in the other.
              */
-            holder.reportID.setText("   " + reportList.get(key).getReportNum());
+
+            String reportId =("   " + reportList.get(key).getReportNum());
+            String reportLoc = ("   " + reportList.get(key).getType());
+            String reportCond = ("   " + reportList.get(key).getCondition());
+
+            holder.reportID.setText(reportId);
             holder.reportLOC.setText("   (" + reportList.get(key).getLat() + ", " + reportList.get(key).getLong() + ")");
-            holder.reportTYPE.setText("   " + reportList.get(key).getType());
-            holder.reportCOND.setText("   " + reportList.get(key).getCondition());
+            holder.reportTYPE.setText(reportLoc);
+            holder.reportCOND.setText(reportCond);
 
         }
 
@@ -125,6 +128,11 @@ public class ViewSourceReports extends AppCompatActivity {
             public final TextView reportCOND;
             public SourceReport reportList;
 
+            /**
+             * Binds the viewHolder layouts to TextView objects
+             *
+             * @param view The view being used
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;

@@ -33,18 +33,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean result;
 
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Model model = Model.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-        System.out.println("ONcreate here");
-        System.out.println(model.getUserHashMap().toString());
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -136,6 +132,8 @@ public class LoginActivity extends AppCompatActivity {
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
+
+                    @Override
                     public void run() {
                         model.setCurrentUser(model.getUserHashMap().get(username));
                     }
